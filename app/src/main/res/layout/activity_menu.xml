@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/views_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#252627" />
+
+    <com.google.android.material.bottomappbar.BottomAppBar
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/bottomMenu"
+        app:fabCradleMargin="15dp"
+        app:fabCradleRoundedCornerRadius="10dp"
+        app:fabCradleVerticalOffset="10dp"
+        android:layout_gravity="bottom">
+
+
+
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/bottom_Tab"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginEnd="16dp"
+            app:tabIndicatorHeight="0dp"
+            app:tabIndicatorFullWidth="false"
+            app:tabTextAppearance="@style/TabLayoutTextAppearance"
+            android:background="@android:color/transparent"
+            app:elevation="0dp">
+            <com.google.android.material.tabs.TabItem
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Home"
+                android:icon="@drawable/ic_baseline_home_24"/>
+            <com.google.android.material.tabs.TabItem
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="Status"
+                android:icon="@drawable/ic_baseline_menu_24"/>
+        </com.google.android.material.tabs.TabLayout>
+    </com.google.android.material.bottomappbar.BottomAppBar>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_baseline_add_24"
+        app:backgroundTint="#FAA613"
+        app:layout_anchor="@id/bottomMenu"
+        app:tint="#FFFFFF"
+        tools:ignore="contentDescription,SpeakableTextPresentCheck" />
+
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
