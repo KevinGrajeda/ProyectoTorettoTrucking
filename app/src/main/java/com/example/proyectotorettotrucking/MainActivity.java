@@ -14,6 +14,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        usuario = findViewById(R.id.txtUsuario);
+        password = findViewById(R.id.txtPassword);
 
     }
     public void ingresarMenu(View view){
