@@ -72,8 +72,34 @@ public class AgregarPedidoFragment extends Fragment {
         spnOrigenes=view.findViewById(R.id.spnOrigenes);
         spnDestinos=view.findViewById(R.id.spnDestinos);
 
-        String[] productos={"atun","papas"};
-        String[] sucursales={"Jalisco","Colima"};
+        Productos[] Productos = new Productos[10];
+        Sucursales[] Sucursales = new Sucursales[5];
+        Productos[0] = new Productos(0,"Hojas","Hojas papel bond","Scribe",900);
+        Productos[1] = new Productos(1,"Lapices","Lapices N.2","BIC",150);
+        Productos[2] = new Productos(2,"Laptop","Laptop gamer","Asus",1200);
+        Productos[3] = new Productos(3,"Marcadores","Marcadores para pintarron","BIC",200);
+        Productos[4] = new Productos(4,"Playeras","Playera basica","Yazbek",2000);
+        Productos[5] = new Productos(5,"Tenis","Tenis hombre","Nike",2500);
+        Productos[6] = new Productos(6,"Pizarron","Pizarron blanco","BIC",2500);
+        Productos[7] = new Productos(7,"Escritorio","Escritorio 2 metros","IKEA",4500);
+        Productos[8] = new Productos(8,"Pantalon","Pantalon levis 505","Levis",2500);
+        Productos[9] = new Productos(9,"USB","Usb 16gb","Kingston",700);
+
+        Sucursales[0] = new Sucursales(0,"Puerto Vallarta","Jalisco","Puerto vallarta","Mexico");
+        Sucursales[1] = new Sucursales(1,"Ciudad de México","Ciudad de México","Ciudad de México","México");
+        Sucursales[2] = new Sucursales(2,"Manzanillo","Colima","Manzanillo","México");
+        Sucursales[3] = new Sucursales(3,"Tijuana","Baja California","Tijuana","México");
+        Sucursales[4] = new Sucursales(4,"California","California","Los Angeles","USA");
+
+
+        String[] productos = new String[10];
+        String[] sucursales = new String[5];
+        for  (int i=0; i<Productos.length; i++){
+            productos[i]=Productos[i].getNombre();
+        }
+        for (int i=0; i<Sucursales.length; i++ ){
+            sucursales[i]=Sucursales[i].getNombre();
+        }
 
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(), R.layout.spinner_item,productos);
         spnProductos.setAdapter(adapter);
