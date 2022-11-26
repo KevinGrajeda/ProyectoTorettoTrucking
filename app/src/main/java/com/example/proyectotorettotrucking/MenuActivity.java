@@ -17,6 +17,7 @@ public class MenuActivity extends AppCompatActivity {
     ViewPager2 viewsContainer;
     FragmentControler menuCtrl;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,5 +49,14 @@ public class MenuActivity extends AppCompatActivity {
 
             }
         });
+
+        findViewById(R.id.btnAgregar).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                viewsContainer.setCurrentItem(3);
+            }
+        });
+
+
     }
 }

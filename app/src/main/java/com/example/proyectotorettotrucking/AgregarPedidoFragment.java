@@ -7,6 +7,8 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -24,8 +26,11 @@ public class AgregarPedidoFragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
+    Spinner spnProductos,spnOrigenes,spnDestinos;
+
     public AgregarPedidoFragment() {
         // Required empty public constructor
+
     }
 
     /**
@@ -53,12 +58,30 @@ public class AgregarPedidoFragment extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+
+
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_agregar_pedido, container, false);
+        View view=inflater.inflate(R.layout.fragment_agregar_pedido, container, false);
+
+        spnProductos=view.findViewById(R.id.spnProductos);
+        spnOrigenes=view.findViewById(R.id.spnOrigenes);
+        spnDestinos=view.findViewById(R.id.spnDestinos);
+
+        String[] productos={"atun","papas"};
+        String[] sucursales={"Jalisco","Colima"};
+
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(), R.layout.spinner_item,productos);
+        spnProductos.setAdapter(adapter);
+
+        adapter = new ArrayAdapter<String>(getActivity(), R.layout.spinner_item,sucursales);
+        spnOrigenes.setAdapter(adapter);
+        spnDestinos.setAdapter(adapter);
+
+        return view;
     }
 }
