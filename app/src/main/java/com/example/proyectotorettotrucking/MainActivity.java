@@ -8,6 +8,9 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 
+import java.util.Timer;
+import java.util.TimerTask;
+
 public class MainActivity extends AppCompatActivity {
     EditText usuario, password;
     @Override
@@ -16,6 +19,20 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         usuario = findViewById(R.id.txtUsuario);
         password = findViewById(R.id.txtPassword);
+        TimerTask tarea = new TimerTask() {
+            @Override
+            public void run() {
+                Intent intent;
+                if (nuevoUsuario()){
+                    intent = new Intent(MainActivity.this, MenuActivity.class);
+                    startActivity(intent);
+                    finish();
+                }
+
+            }
+        };
+        Timer tiempo = new Timer();
+        tiempo.schedule(tarea,10);
 
     }
     public void ingresarMenu(View view){
@@ -39,5 +56,10 @@ public class MainActivity extends AppCompatActivity {
     }
     public void salirMenu(View view){
         finish();
+    }
+
+    private boolean nuevoUsuario(){
+        SharedPreferences preferences = getSharedPreferences("usr.dat", MODE_PRIVATE);
+        return preferences.getBoolean("registrado",false);
     }
 }
