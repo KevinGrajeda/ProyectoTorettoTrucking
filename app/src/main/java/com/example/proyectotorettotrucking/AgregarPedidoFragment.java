@@ -8,56 +8,37 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.TextView;
+import android.widget.Toast;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link AgregarPedidoFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
 public class AgregarPedidoFragment extends Fragment {
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
-
     Spinner spnProductos,spnOrigenes,spnDestinos;
+    EditText txtCantidad;
+    TextView txtProductosAgregados,txtVehiculo;
+
+    Productos[] Productos;
+    Camion[] Camiones;
+    Sucursales[] Sucursales;
+    Tractor[] Tractores;
+
+    String productosAgregados="Productos agregados:\n";
+    float pesoTotal=0;
 
     public AgregarPedidoFragment() {
-        // Required empty public constructor
 
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment AgregarPedidoFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static AgregarPedidoFragment newInstance(String param1, String param2) {
+    /*public static AgregarPedidoFragment newInstance() {
         AgregarPedidoFragment fragment = new AgregarPedidoFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
         return fragment;
-    }
+    }*/
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
 
 
     }
@@ -71,11 +52,21 @@ public class AgregarPedidoFragment extends Fragment {
         spnProductos=view.findViewById(R.id.spnProductos);
         spnOrigenes=view.findViewById(R.id.spnOrigenes);
         spnDestinos=view.findViewById(R.id.spnDestinos);
+        txtCantidad=view.findViewById(R.id.txtCantidad);
+        txtProductosAgregados=view.findViewById(R.id.txtProductosAgregados);
+        txtVehiculo=view.findViewById(R.id.txtVehiculo);
 
-        Productos[] Productos = new Productos[10];
-        Sucursales[] Sucursales = new Sucursales[5];
-        Tractor[] Tractor = new Tractor[4];
-        Camion[] Camion = new Camion[6];
+        view.findViewById(R.id.btnAgregarProducto).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                AgregarProducto();
+            }
+        });
+
+        Productos = new Productos[10];
+        Sucursales = new Sucursales[5];
+        Tractores = new Tractor[4];
+        Camiones = new Camion[6];
 
         Productos[0] = new Productos(0,"Hojas","Hojas papel bond","Scribe",900);
         Productos[1] = new Productos(1,"Lapices","Lapices N.2","BIC",150);
@@ -94,17 +85,17 @@ public class AgregarPedidoFragment extends Fragment {
         Sucursales[3] = new Sucursales(3,"Tijuana","Baja California","Tijuana","México");
         Sucursales[4] = new Sucursales(4,"California","California","Los Angeles","USA");
 
-        Camion[0] = new Camion(0, new int[]{2,3,8},"CRTLO10","FreighLiner",true,25000,"Trailer",true);
-        Camion[1] = new Camion(1, new int[]{2,3,8},"KLSL856","FreighLiner",true,12000,"Torthon",true);
-        Camion[2] = new Camion(2, new int[]{2,3,10},"HCJE889","Ford",true,8500,"Rabon",true);
-        Camion[3] = new Camion(3, new int[]{2,3,8},"CRTLO10","Ford",true,5000,"Camioneta 5 ton.",true);
-        Camion[4] = new Camion(4, new int[]{2,3,8},"DACA852","Ford",true,3500,"Camioneta 3.5 ton.",true);
-        Camion[5] = new Camion(5, new int[]{2,3,6},"CNNXA84","Nissan",true,1000,"Camioneta 1 ton.",true);
+        Camiones[0] = new Camion(0, new int[]{2,3,8},"CRTLO10","FreighLiner",true,25000,"Trailer",true);
+        Camiones[1] = new Camion(1, new int[]{2,3,8},"KLSL856","FreighLiner",true,12000,"Torthon",true);
+        Camiones[2] = new Camion(2, new int[]{2,3,10},"HCJE889","Ford",true,8500,"Rabon",true);
+        Camiones[3] = new Camion(3, new int[]{2,3,8},"CRTLO10","Ford",true,5000,"Camioneta 5 ton.",true);
+        Camiones[4] = new Camion(4, new int[]{2,3,8},"DACA852","Ford",true,3500,"Camioneta 3.5 ton.",true);
+        Camiones[5] = new Camion(5, new int[]{2,3,6},"CNNXA84","Nissan",true,1000,"Camioneta 1 ton.",true);
 
-        Tractor[0] = new Tractor(0,new int[]{2,3,15},"DEA86","CHEVRON",false,22000,"Caja","15 metros","Neumatica","Libre",12,false);
-        Tractor[1] = new Tractor(1,new int[]{2,3,15},"D86DA","CHEVRON",false,20000,"Caja Refrigerada","15 metros","Neumatica","Libre",12,true);
-        Tractor[2] = new Tractor(2,new int[]{2,3,15},"FGR68","FREIGHT",false,22000,"Caja","15 metros","Neumatica","Libre",12,false);
-        Tractor[3] = new Tractor(3,new int[]{2,3,15},"AE570","MALIK",false,22000,"Caja Refrigerada","15 metros","Neumatica","Libre",12,true);
+        Tractores[0] = new Tractor(0,new int[]{2,3,15},"DEA86","CHEVRON",false,22000,"Caja","15 metros","Neumatica","Libre",12,false);
+        Tractores[1] = new Tractor(1,new int[]{2,3,15},"D86DA","CHEVRON",false,20000,"Caja Refrigerada","15 metros","Neumatica","Libre",12,true);
+        Tractores[2] = new Tractor(2,new int[]{2,3,15},"FGR68","FREIGHT",false,22000,"Caja","15 metros","Neumatica","Libre",12,false);
+        Tractores[3] = new Tractor(3,new int[]{2,3,15},"AE570","MALIK",false,22000,"Caja Refrigerada","15 metros","Neumatica","Libre",12,true);
 
         String[] productos = new String[10];
         String[] sucursales = new String[5];
@@ -116,13 +107,14 @@ public class AgregarPedidoFragment extends Fragment {
         for (int i=0; i<Sucursales.length; i++ ){
             sucursales[i]=Sucursales[i].getNombre();
         }
-        for(int i=0; i<Camion.length; i++){
+
+        /*for(int i=0; i<Camion.length; i++){
             camion[i]=Camion[i].getTipo();
             peso[i] = Camion[i].getCapacidad();
             //Tipo de camiones que hay y su capacidad en arreglos para asiganar automaticamente
             //segun el producto y su cantidad
         }
-
+        */
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(), R.layout.spinner_item,productos);
         spnProductos.setAdapter(adapter);
 
@@ -131,5 +123,33 @@ public class AgregarPedidoFragment extends Fragment {
         spnDestinos.setAdapter(adapter);
 
         return view;
+    }
+
+    public void AgregarProducto(){
+        int cantidad;
+        try{
+            cantidad=Integer.parseInt(txtCantidad.getText().toString());
+        }catch (Exception e){
+            Toast.makeText(getActivity(), "Ingresa un numero", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        int posicionProducto=spnProductos.getSelectedItemPosition();
+        float peso=cantidad*Productos[posicionProducto].getPeso();
+        pesoTotal+=peso;
+        productosAgregados+=cantidad+" "+Productos[posicionProducto].getNombre()+"\n";
+        txtProductosAgregados.setText(productosAgregados+"\nPeso total: "+(pesoTotal/1000)+"Kg");
+        Camion camionSeleccionado=null;
+        for(Camion camion : Camiones){
+            if((camion.capacidad*1000)<pesoTotal){
+                break;
+            }else{
+                camionSeleccionado=camion;
+            }
+        }
+        if(camionSeleccionado==null){
+            Toast.makeText(getActivity(), "no existe camion para este peso", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        txtVehiculo.setText("Vehiculo: "+camionSeleccionado.getTipo());
     }
 }

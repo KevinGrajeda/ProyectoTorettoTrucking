@@ -48,7 +48,7 @@
                 android:foregroundTint="@color/naranjaToretto" />
 
             <EditText
-                android:id="@+id/editTextNumber"
+                android:id="@+id/txtCantidad"
                 android:layout_width="77dp"
                 android:layout_height="45dp"
                 android:backgroundTint="@color/naranjaToretto"
@@ -57,7 +57,7 @@
                 android:textColor="@color/white" />
 
             <ImageButton
-                android:id="@+id/imageButton"
+                android:id="@+id/btnAgregarProducto"
                 android:layout_width="44dp"
                 android:layout_height="45dp"
                 android:background="@android:color/transparent"
@@ -81,12 +81,20 @@
                     android:layout_height="83dp">
 
                     <TextView
-                        android:id="@+id/textView13"
+                        android:id="@+id/txtProductosAgregados"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="Productos agregados:"
                         android:textColor="@color/gray" />
                 </ScrollView>
+
+                <View
+                    android:id="@+id/divider"
+                    android:layout_width="match_parent"
+                    android:layout_height="3dp"
+                    android:background="?android:attr/listDivider"
+                    android:backgroundTint="@color/naranjaToretto"
+                    android:foregroundTintMode="add" />
 
                 <TextView
                     android:id="@+id/textView6"
@@ -139,7 +147,7 @@
                     android:textColor="@color/white" />
 
                 <TextView
-                    android:id="@+id/textView9"
+                    android:id="@+id/txtVehiculo"
                     android:layout_width="match_parent"
                     android:layout_height="35dp"
                     android:gravity="bottom"
