@@ -1,9 +1,9 @@
-package com.example.proyectotorettotrucking;
+package com.example.proyectotorettotrucking.clases;
 
 public class Tractor extends Vehiculo{
-    String tipo,longitudCaja, suspension,traccion;
-    int llantas;
-    boolean refrigerado;
+    private String tipo,longitudCaja, suspension,traccion;
+    private int llantas;
+    private boolean refrigerado;
 
     public Tractor(int id, int[] dimensiones, String matricula, String marca, boolean propio, float capacidad, String tipo, String longitudCaja, String suspension, String traccion, int llantas, boolean refrigerado) {
         super(id, dimensiones, matricula, marca, propio, capacidad);

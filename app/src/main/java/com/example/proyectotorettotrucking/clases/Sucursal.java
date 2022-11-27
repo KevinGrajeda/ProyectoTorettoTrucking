@@ -1,10 +1,10 @@
-package com.example.proyectotorettotrucking;
+package com.example.proyectotorettotrucking.clases;
 
-public class Sucursales {
-    int id;
-    String nombre, estado,ciudad,pais;
+public class Sucursal {
+    private int id;
+    private String nombre, estado,ciudad,pais;
 
-    public Sucursales(int id, String nombre, String estado, String ciudad, String pais) {
+    public Sucursal(int id, String nombre, String estado, String ciudad, String pais) {
         this.id = id;
         this.nombre = nombre;
         this.estado = estado;
@@ -12,7 +12,7 @@ public class Sucursales {
         this.pais = pais;
     }
 
-    public Sucursales() {
+    public Sucursal() {
 
     }
 

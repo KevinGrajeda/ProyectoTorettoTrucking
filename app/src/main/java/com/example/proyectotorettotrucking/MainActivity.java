@@ -8,6 +8,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 
+import com.example.proyectotorettotrucking.clases.Usuario;
+
 import java.util.Timer;
 import java.util.TimerTask;
 

@@ -1,10 +1,10 @@
-package com.example.proyectotorettotrucking;
+package com.example.proyectotorettotrucking.clases;
 
 public class Pedido {
 
-    int id,noPedido,destino,origen,productos,vehiculo,status;
-    String descripcion;
-    float precio;
+    private int id,noPedido,destino,origen,productos,vehiculo,status;
+    private String descripcion;
+    private float precio;
 
     public Pedido() {
     }
