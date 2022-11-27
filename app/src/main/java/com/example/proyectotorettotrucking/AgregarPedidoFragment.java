@@ -74,6 +74,9 @@ public class AgregarPedidoFragment extends Fragment {
 
         Productos[] Productos = new Productos[10];
         Sucursales[] Sucursales = new Sucursales[5];
+        Tractor[] Tractor = new Tractor[4];
+        Camion[] Camion = new Camion[6];
+
         Productos[0] = new Productos(0,"Hojas","Hojas papel bond","Scribe",900);
         Productos[1] = new Productos(1,"Lapices","Lapices N.2","BIC",150);
         Productos[2] = new Productos(2,"Laptop","Laptop gamer","Asus",1200);
@@ -91,14 +94,33 @@ public class AgregarPedidoFragment extends Fragment {
         Sucursales[3] = new Sucursales(3,"Tijuana","Baja California","Tijuana","México");
         Sucursales[4] = new Sucursales(4,"California","California","Los Angeles","USA");
 
+        Camion[0] = new Camion(0, new int[]{2,3,8},"CRTLO10","FreighLiner",true,25000,"Trailer",true);
+        Camion[1] = new Camion(1, new int[]{2,3,8},"KLSL856","FreighLiner",true,12000,"Torthon",true);
+        Camion[2] = new Camion(2, new int[]{2,3,10},"HCJE889","Ford",true,8500,"Rabon",true);
+        Camion[3] = new Camion(3, new int[]{2,3,8},"CRTLO10","Ford",true,5000,"Camioneta 5 ton.",true);
+        Camion[4] = new Camion(4, new int[]{2,3,8},"DACA852","Ford",true,3500,"Camioneta 3.5 ton.",true);
+        Camion[5] = new Camion(5, new int[]{2,3,6},"CNNXA84","Nissan",true,1000,"Camioneta 1 ton.",true);
+
+        Tractor[0] = new Tractor(0,new int[]{2,3,15},"DEA86","CHEVRON",false,22000,"Caja","15 metros","Neumatica","Libre",12,false);
+        Tractor[1] = new Tractor(1,new int[]{2,3,15},"D86DA","CHEVRON",false,20000,"Caja Refrigerada","15 metros","Neumatica","Libre",12,true);
+        Tractor[2] = new Tractor(2,new int[]{2,3,15},"FGR68","FREIGHT",false,22000,"Caja","15 metros","Neumatica","Libre",12,false);
+        Tractor[3] = new Tractor(3,new int[]{2,3,15},"AE570","MALIK",false,22000,"Caja Refrigerada","15 metros","Neumatica","Libre",12,true);
 
         String[] productos = new String[10];
         String[] sucursales = new String[5];
+        String[] camion = new String[6];
+        float[] peso = new float[6];
         for  (int i=0; i<Productos.length; i++){
             productos[i]=Productos[i].getNombre();
         }
         for (int i=0; i<Sucursales.length; i++ ){
             sucursales[i]=Sucursales[i].getNombre();
+        }
+        for(int i=0; i<Camion.length; i++){
+            camion[i]=Camion[i].getTipo();
+            peso[i] = Camion[i].getCapacidad();
+            //Tipo de camiones que hay y su capacidad en arreglos para asiganar automaticamente
+            //segun el producto y su cantidad
         }
 
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(), R.layout.spinner_item,productos);
