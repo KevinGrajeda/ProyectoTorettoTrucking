@@ -15,16 +15,21 @@
         android:text="@string/login"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         android:textColor="@color/naranjaToretto"
+        android:textSize="24sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/txtUsuario"
-        android:layout_width="244dp"
+        android:layout_width="260dp"
         android:layout_height="48dp"
-        android:layout_marginTop="30dp"
-        android:backgroundTint="@color/naranjaToretto"
+        android:layout_marginTop="35dp"
+        android:background="@drawable/custom_edittext"
+        android:drawableStart="@drawable/ic_user"
+        android:drawablePadding="8dp"
+        android:drawableTint="@color/white"
         android:ems="10"
         android:hint="@string/usuario"
         android:importantForAutofill="no"
@@ -37,10 +42,13 @@
 
     <EditText
         android:id="@+id/txtPassword"
-        android:layout_width="246dp"
+        android:layout_width="260dp"
         android:layout_height="52dp"
-        android:layout_marginTop="30dp"
-        android:backgroundTint="@color/naranjaToretto"
+        android:layout_marginTop="35dp"
+        android:background="@drawable/custom_edittext"
+        android:drawableStart="@drawable/ic_lock"
+        android:drawablePadding="8dp"
+        android:drawableTint="@color/white"
         android:ems="10"
         android:hint="@string/password"
         android:importantForAutofill="no"
@@ -51,25 +59,28 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtUsuario" />
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/button"
-        android:layout_width="wrap_content"
+        android:layout_width="110dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="50dp"
-        android:layout_marginTop="50dp"
-        android:onClick="ingresarMenu"
-        android:text="@string/ingresar"
+        android:layout_marginTop="60dp"
+        android:onClick="salirMenu"
+        android:backgroundTint="@color/white"
+        android:text="salir"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtPassword" />
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/button2"
-        android:layout_width="wrap_content"
+        android:layout_width="110dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="60dp"
         android:layout_marginEnd="50dp"
-        android:onClick="salirMenu"
-        android:text="@string/salir"
+        android:onClick="ingresarMenu"
+        android:text="@string/ingresar"
+        android:textColor="@color/varGrisToretto"
+        android:backgroundTint="@color/naranjaToretto"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtPassword" />
 
