@@ -1,5 +1,6 @@
 package com.example.proyectotorettotrucking;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -11,6 +12,10 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.Toast;
+
+import java.lang.reflect.Array;
+import java.util.Arrays;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -70,7 +75,7 @@ public class HistoryFragment extends Fragment {
 
         tipos = view.findViewById(R.id.spinnerTipo);
         todos = view.findViewById(R.id.spinnerTodo);
-        //informacion = view.findViewById(R.id.edtInformacion);
+        informacion = view.findViewById(R.id.edtInformacion);
 
         Productos[] Productos = new Productos[10];
         Sucursales[] Sucursales = new Sucursales[5];
@@ -109,22 +114,125 @@ public class HistoryFragment extends Fragment {
         String[] ArrayTipos= new String[]{"Productos","Sucursales","Camiones","Tractores"};
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(), R.layout.spinner_item,ArrayTipos);
         tipos.setAdapter(adapter);
-
+        String[] productos = new String[Productos.length];
+        String[] sucursales = new String[Sucursales.length];
+        String[] camion = new String[Camion.length];
+        String[] tractor = new String[Tractor.length];
         tipos.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                int opcion = tipos.getSelectedItemPosition();
-                switch (opcion){
+
+                ArrayAdapter<String> adapter;
+                switch (i){
                     case 0:
-                        String[] productos = new String[Productos.length];
                         for  (int j=0; j<Productos.length; j++){
                             productos[j]=Productos[j].getNombre();
                         }
 
-                        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(), R.layout.spinner_item,productos);
+                        adapter = new ArrayAdapter<String>(getActivity(), R.layout.spinner_item,productos);
+                        todos.setAdapter(adapter);
+                        break;
+                    case 1:
+                        for  (int j=0; j<Sucursales.length; j++){
+                            sucursales[j]=Sucursales[j].getNombre();
+                        }
+
+                        adapter = new ArrayAdapter<String>(getActivity(), R.layout.spinner_item,sucursales);
+                        todos.setAdapter(adapter);
+                        break;
+                    case 2:
+                        for  (int j=0; j<Camion.length; j++){
+                            camion[j]=Camion[j].getTipo();
+                        }
+
+                        adapter = new ArrayAdapter<String>(getActivity(), R.layout.spinner_item,camion);
+                        todos.setAdapter(adapter);
+                        break;
+                    case 3:
+                        for  (int j=0; j<Tractor.length; j++){
+                            tractor[j]=Tractor[j].getTipo();
+                        }
+
+                        adapter = new ArrayAdapter<String>(getActivity(), R.layout.spinner_item,tractor);
                         todos.setAdapter(adapter);
                         break;
                 }
+            }
+
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+
+        todos.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @SuppressLint("SetTextI18n")
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                    int n = tipos.getSelectedItemPosition();
+                    switch (n){
+                        case 0:
+                               informacion.setText("Id: " + Productos[i].getId() + "\n"
+                               +"Nombre: "+Productos[i].getNombre()+"\n"
+                               +"Descripcion: "+Productos[i].getDescripcion()+"\n"
+                               +"Marca: "+Productos[i].getPeso()+"  g.");
+                            break;
+                        case 1:
+                                informacion.setText("Id: "+Sucursales[i].getId()+"\n"
+                                +"Estado: "+Sucursales[i].getEstado()+"\n"
+                                +"Ciudad: "+Sucursales[i].getCiudad()+"\n"
+                                +"Pais: "+Sucursales[i].getPais());
+                            break;
+                        case 2:
+                                String propio,cerrado;
+                                if(Camion[i].isPropio()){
+                                    propio="Propio";
+                                }
+                                else{
+                                    propio="No es propio";
+                                }
+                                if(Camion[i].isCerrado()){
+                                    cerrado="Cerrado";
+                                }
+                                else{
+                                    cerrado="No es cerrado";
+                                }
+                                informacion.setText("Id: "+Camion[i].getId()+"\n"
+                                +"Dimensiones: "+Arrays.toString(Camion[i].getDimensiones())+"\n"
+                                +"Matricula: "+Camion[i].getMatricula()+"\n"
+                                +"Marca: "+Camion[i].getMarca()+"\n"
+                                +"Propio: "+propio+"\n"
+                                +"Capacidad: "+Camion[i].getCapacidad()+"\n"
+                                +"Tipo: "+Camion[i].getTipo()+"\n"
+                                +"Cerrado: "+cerrado);
+                            break;
+                        case 3:
+                            String propioT,refrigerado;
+                            if(Tractor[i].isPropio()){
+                                propioT="Propio";
+                            }
+                            else{
+                                propioT="No es propio";
+                            }
+                            if(Tractor[i].isRefrigerado()){
+                                refrigerado="Refrigerado";
+                            }
+                            else{
+                                refrigerado="No refrigerado";
+                            }
+                            informacion.setText("Id: "+Tractor[i].getId()+"\n"
+                                    +"Dimensiones: "+ Arrays.toString(Tractor[i].getDimensiones())+"\n"
+                                    +"Matricula: "+Tractor[i].getMatricula()+"\n"
+                                    +"Marca: "+Tractor[i].getMarca()+"\n"
+                                    +"Propio: "+propioT+"\n"
+                                    +"Capacidad: "+Tractor[i].getCapacidad()+"\n"
+                                    +"Tipo: "+Tractor[i].getTipo()+"\n"
+                                    +"Refrigerado: "+refrigerado);
+                            break;
+                    }//Cuantos cases voy a preparar
+
+
             }
 
             @Override
