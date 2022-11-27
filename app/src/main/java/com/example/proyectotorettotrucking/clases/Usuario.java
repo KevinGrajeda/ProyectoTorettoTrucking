@@ -1,9 +1,9 @@
-package com.example.proyectotorettotrucking;
+package com.example.proyectotorettotrucking.clases;
 
 public class Usuario {
-    boolean registrado;
-    String correo, contraseña;
-    int id,role;
+    private boolean registrado;
+    private String correo, contraseña;
+    private int id,role;
     public Usuario() {
     }
 

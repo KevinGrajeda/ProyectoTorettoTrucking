@@ -1,12 +1,12 @@
-package com.example.proyectotorettotrucking;
+package com.example.proyectotorettotrucking.clases;
 
 public class Vehiculo {
 
-    int id;
-    int[] dimensiones;
-    String matricula, marca;
-    boolean propio;
-    float capacidad;
+    private int id;
+    private int[] dimensiones;
+    private String matricula, marca;
+    private boolean propio;
+    private float capacidad;
 
     public Vehiculo() {
     }

@@ -6,4 +6,13 @@
     <string name="ingresar">Ingresar</string>
     <string name="salir">Salir</string>
     <string name="informacion">Informacion</string>
+    <string-array name="productos">
+        <item>atun</item>
+    </string-array>
+    <string-array name="origenes">
+        <item>Jalisco</item>
+    </string-array>
+    <string-array name="destinos">
+        <item>Colima</item>
+    </string-array>
 </resources>

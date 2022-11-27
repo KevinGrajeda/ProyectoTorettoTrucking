@@ -1,8 +1,8 @@
-package com.example.proyectotorettotrucking;
+package com.example.proyectotorettotrucking.clases;
 
 public class Camion extends  Vehiculo{
-    String tipo;
-    boolean cerrado;
+    private String tipo;
+    private boolean cerrado;
 
     public Camion() {
         super();

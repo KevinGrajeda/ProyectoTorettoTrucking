@@ -1,11 +1,11 @@
-package com.example.proyectotorettotrucking;
+package com.example.proyectotorettotrucking.clases;
 
-public class Productos {
-    int id;
-    String nombre,descripcion,marca;
-    float peso;
+public class Producto {
+    private int id;
+    private String nombre,descripcion,marca;
+    private float peso;
 
-    public Productos(int id, String nombre, String descripcion, String marca, float peso) {
+    public Producto(int id, String nombre, String descripcion, String marca, float peso) {
         this.id = id;
         this.nombre = nombre;
         this.descripcion = descripcion;
@@ -13,7 +13,7 @@ public class Productos {
         this.peso = peso;
     }
 
-    public Productos() {
+    public Producto() {
     }
 
     public int getId() {
