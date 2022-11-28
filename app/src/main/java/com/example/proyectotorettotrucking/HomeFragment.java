@@ -4,14 +4,23 @@ import static android.content.Context.MODE_PRIVATE;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TableLayout;
+import android.widget.TableRow;
+import android.widget.TextView;
+
+import com.google.android.material.button.MaterialButton;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -61,11 +70,152 @@ public class HomeFragment extends Fragment {
         }
     }
 
+
+    /*<TextView
+    android:layout_width="0dp"
+    android:layout_height="wrap_content"
+    android:layout_weight="2"
+    android:gravity="center_horizontal"
+    android:padding="10sp"
+    android:text="@string/col1"
+    android:textColor="@color/white"
+    android:textSize="12sp" />
+                <com.google.android.material.button.MaterialButton
+    android:layout_width="0dp"
+    android:layout_height="wrap_content"
+    android:layout_weight="1"
+    android:gravity="center"
+    android:padding="12sp"
+    android:textColor="@color/white"
+    android:textSize="12sp"
+    app:icon="@drawable/ic_baseline_remove_red_eye_24" />
+
+    </TableRow>*/
+
+    public void tableinit(View view){
+
+        TableLayout tl = view.findViewById(R.id.tblViajesActuales);
+        for (int i = 25; i > 20; i--) {
+            //Table Row
+            TableRow tbrow = new TableRow(getContext());
+            tbrow.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.WRAP_CONTENT, TableRow.LayoutParams.WRAP_CONTENT));
+            tbrow.setWeightSum(8); //total row weight
+
+            TableRow.LayoutParams lp1 = new TableRow.LayoutParams();
+            lp1.weight = 2;
+
+            lp1 = new TableRow.LayoutParams(0, TableRow.LayoutParams.WRAP_CONTENT, 2f);
+            TextView t1v = new TextView(getContext());
+            //*Primer campo
+            t1v.setText(""+i);
+            t1v.setTextColor(Color.WHITE);
+            t1v.setTextSize(12);
+            t1v.setLayoutParams(lp1);
+            t1v.setGravity(Gravity.CENTER);
+            t1v.setPadding(10,0,10,0);
+            tbrow.addView(t1v);
+            //*Segundo campo
+            lp1 = new TableRow.LayoutParams(0, TableRow.LayoutParams.WRAP_CONTENT, 3f);
+            TextView t2v = new TextView(getContext());
+            t2v.setText("Pto. Vallarta - Guadalajara");
+            t2v.setTextColor(Color.WHITE);
+            t2v.setTextSize(12);
+            t2v.setLayoutParams(lp1);
+            t2v.setGravity(Gravity.CENTER);
+            t2v.setPadding(10,0,10,0);
+            tbrow.addView(t2v);
+            //*Tercer campo
+            lp1 = new TableRow.LayoutParams(0, TableRow.LayoutParams.WRAP_CONTENT, 2f);
+            TextView t3v = new TextView(getContext());
+            t3v.setText("$2950.00");
+            t3v.setTextColor(Color.WHITE);
+            t3v.setTextSize(12);
+            t3v.setLayoutParams(lp1);
+            t3v.setGravity(Gravity.CENTER);
+            t3v.setPadding(10,0,10,0);
+            tbrow.addView(t3v);
+            //*Cuarto campo
+            lp1 = new TableRow.LayoutParams(0, TableRow.LayoutParams.WRAP_CONTENT, 1f);
+
+            MaterialButton t4v = new MaterialButton(getContext());
+            t4v.setIcon(ContextCompat.getDrawable(getContext(), R.drawable.ic_baseline_remove_red_eye_24));
+            t4v.setIconGravity(MaterialButton.ICON_GRAVITY_START);
+            t4v.setTextColor(Color.WHITE);
+            t4v.setTextSize(10);
+            t4v.setLayoutParams(lp1);
+            t4v.setGravity(Gravity.CENTER);
+            t4v.setPadding(33,0,0,0);
+            tbrow.addView(t4v);
+
+            tl.addView(tbrow);
+
+        }
+
+
+        TableLayout tl2 = view.findViewById(R.id.tblViajesTerminados);
+        for (int i = 20; i > 0; i--) {
+            //Table Row
+            TableRow tbrow = new TableRow(getContext());
+            tbrow.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.WRAP_CONTENT, TableRow.LayoutParams.WRAP_CONTENT));
+            tbrow.setWeightSum(8); //total row weight
+
+            TableRow.LayoutParams lp1 = new TableRow.LayoutParams();
+            lp1.weight = 2;
+
+            lp1 = new TableRow.LayoutParams(0, TableRow.LayoutParams.WRAP_CONTENT, 2f);
+            TextView t1v = new TextView(getContext());
+            //*Primer campo
+            t1v.setText(""+i);
+            t1v.setTextColor(Color.WHITE);
+            t1v.setTextSize(12);
+            t1v.setLayoutParams(lp1);
+            t1v.setGravity(Gravity.CENTER);
+            t1v.setPadding(10,0,10,0);
+            tbrow.addView(t1v);
+            //*Segundo campo
+            lp1 = new TableRow.LayoutParams(0, TableRow.LayoutParams.WRAP_CONTENT, 3f);
+            TextView t2v = new TextView(getContext());
+            t2v.setText("Calfornia - Chiapas");
+            t2v.setTextColor(Color.WHITE);
+            t2v.setTextSize(12);
+            t2v.setLayoutParams(lp1);
+            t2v.setGravity(Gravity.CENTER);
+            t2v.setPadding(10,0,10,0);
+            tbrow.addView(t2v);
+            //*Tercer campo
+            lp1 = new TableRow.LayoutParams(0, TableRow.LayoutParams.WRAP_CONTENT, 2f);
+            TextView t3v = new TextView(getContext());
+            t3v.setText("70000.01");
+            t3v.setTextColor(Color.WHITE);
+            t3v.setTextSize(12);
+            t3v.setLayoutParams(lp1);
+            t3v.setGravity(Gravity.CENTER);
+            t3v.setPadding(10,0,10,0);
+            tbrow.addView(t3v);
+            //*Cuarto campo
+            lp1 = new TableRow.LayoutParams(0, TableRow.LayoutParams.WRAP_CONTENT, 1f);
+
+            MaterialButton t4v = new MaterialButton(getContext());
+            t4v.setIcon(ContextCompat.getDrawable(getContext(), R.drawable.ic_baseline_remove_red_eye_24));
+            t4v.setIconGravity(MaterialButton.ICON_GRAVITY_START);
+            t4v.setTextColor(Color.WHITE);
+            t4v.setTextSize(10);
+            t4v.setLayoutParams(lp1);
+            t4v.setGravity(Gravity.CENTER);
+            t4v.setPadding(33,0,0,0);
+            tbrow.addView(t4v);
+
+            tl2.addView(tbrow);
+
+        }
+    }
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_home, container, false);
+
+        this.tableinit(view);
 
         //view.findViewById(R.id.btnSalir).setOnClickListener(new View.OnClickListener() {
         //    @Override

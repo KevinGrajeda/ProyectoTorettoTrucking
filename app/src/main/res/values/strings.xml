@@ -7,7 +7,8 @@
     <string name="salir">Salir</string>
     <string name="informacion">Informacion</string>
     <string name="cerrarsesion">Cerrar Sesión</string>
-    <string name="viajesactuales">Viajes Actuales</string>
+    <string name="viajesactuales">Viajes en Ruta</string>
+    <string name="viajesterminados">Viajes Terminados</string>
     <string-array name="productos">
         <item>atun</item>
     </string-array>
