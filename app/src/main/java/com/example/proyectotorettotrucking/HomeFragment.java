@@ -67,15 +67,16 @@ public class HomeFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_home, container, false);
 
-        view.findViewById(R.id.btnSalir).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                salir();
-            }
-        });
+        //view.findViewById(R.id.btnSalir).setOnClickListener(new View.OnClickListener() {
+        //    @Override
+        //    public void onClick(View view) {
+        //        salir();
+        //    }
+        //});
 
         return view;
     }
+/*
     public void salir(){
         SharedPreferences preferences = getActivity().getSharedPreferences("usr.dat",MODE_PRIVATE);
         SharedPreferences.Editor editor = preferences.edit();
@@ -86,4 +87,6 @@ public class HomeFragment extends Fragment {
         startActivity(logout);
         getActivity().finish();
     }
+  */
+
 }
