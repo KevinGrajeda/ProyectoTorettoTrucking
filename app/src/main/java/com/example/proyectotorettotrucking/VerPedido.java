@@ -44,6 +44,7 @@ public class VerPedido extends AppCompatActivity {
              public void onClick(View view) {
                  Intent navegacion = new Intent(VerPedido.this, MenuActivity.class);
                  startActivity(navegacion);
+                 finish();
              }
          });
 
