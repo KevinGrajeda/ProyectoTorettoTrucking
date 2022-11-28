@@ -17,4 +17,10 @@
     <string-array name="destinos">
         <item>Colima</item>
     </string-array>
+
+    <string name="col1">No. de viaje</string>
+    <string name="col2">Ruta</string>
+    <string name="col3">Precio</string>
+    <string name="col4">Ver</string>
+
 </resources>

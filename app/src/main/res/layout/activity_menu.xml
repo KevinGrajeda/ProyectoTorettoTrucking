@@ -14,15 +14,14 @@
         android:background="@color/grisToretto" />
 
     <com.google.android.material.bottomappbar.BottomAppBar
+        android:id="@+id/bottomMenu"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/bottomMenu"
+        android:layout_gravity="bottom"
         android:backgroundTint="@color/varGrisToretto"
         app:fabCradleMargin="15dp"
         app:fabCradleRoundedCornerRadius="10dp"
-        app:fabCradleVerticalOffset="10dp"
-        android:layout_gravity="bottom">
-
+        app:fabCradleVerticalOffset="10dp">
 
 
         <com.google.android.material.tabs.TabLayout
@@ -30,21 +29,32 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginEnd="16dp"
-            app:tabIndicatorHeight="0dp"
-            app:tabIndicatorFullWidth="false"
-            app:tabTextAppearance="@style/TabLayoutTextAppearance"
             android:background="@android:color/transparent"
-            app:elevation="0dp">
+            app:elevation="0dp"
+            app:tabIconTintMode="src_atop"
+            app:tabIndicatorFullWidth="false"
+            app:tabIndicatorHeight="0dp"
+            app:tabTextAppearance="@style/TabLayoutTextAppearance"
+            app:tabTextColor="#FFFFFF">
+
             <com.google.android.material.tabs.TabItem
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:icon="@drawable/ic_baseline_home_24"
                 android:text="Home"
-                android:icon="@drawable/ic_baseline_home_24"/>
+                app:tint="#FFFFFF" />
+
             <com.google.android.material.tabs.TabItem
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:background="#FFFFFF"
+                android:backgroundTint="#FFFFFF"
+                android:foreground="#FFFFFF"
+                android:foregroundTint="#FFFFFF"
+                android:icon="@drawable/ic_baseline_menu_24"
                 android:text="Status"
-                android:icon="@drawable/ic_baseline_menu_24"/>
+                android:tint="#FFFFFF"
+                app:tint="#FFFFFF" />
         </com.google.android.material.tabs.TabLayout>
     </com.google.android.material.bottomappbar.BottomAppBar>
 
