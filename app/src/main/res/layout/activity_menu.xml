@@ -40,8 +40,8 @@
             <com.google.android.material.tabs.TabItem
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:icon="@drawable/ic_baseline_home_24"
-                android:text="Home"
+                android:icon="@drawable/ttlogo"
+                android:text="Pedidos"
                 app:tint="#FFFFFF" />
 
             <com.google.android.material.tabs.TabItem
@@ -51,8 +51,8 @@
                 android:backgroundTint="#FFFFFF"
                 android:foreground="#FFFFFF"
                 android:foregroundTint="#FFFFFF"
-                android:icon="@drawable/ic_baseline_menu_24"
-                android:text="Status"
+                android:icon="@android:drawable/ic_dialog_info"
+                android:text="@string/informacion"
                 android:tint="#FFFFFF"
                 app:tint="#FFFFFF" />
         </com.google.android.material.tabs.TabLayout>

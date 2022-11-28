@@ -9,6 +9,7 @@
     <string name="cerrarsesion">Cerrar Sesión</string>
     <string name="viajesactuales">Viajes en Ruta</string>
     <string name="viajesterminados">Viajes Terminados</string>
+    <string name="pedidos">Pedidos</string>
     <string-array name="productos">
         <item>atun</item>
     </string-array>
