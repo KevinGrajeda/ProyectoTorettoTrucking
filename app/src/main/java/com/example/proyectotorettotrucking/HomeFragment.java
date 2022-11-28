@@ -104,7 +104,7 @@ public class HomeFragment extends Fragment {
             TableRow.LayoutParams lp1 = new TableRow.LayoutParams();
             lp1.weight = 2;
 
-            lp1 = new TableRow.LayoutParams(0, TableRow.LayoutParams.WRAP_CONTENT, 2f);
+            lp1 = new TableRow.LayoutParams(0, TableRow.LayoutParams.WRAP_CONTENT, 1f);
             TextView t1v = new TextView(getContext());
             //*Primer campo
             t1v.setText(""+i);
@@ -112,10 +112,10 @@ public class HomeFragment extends Fragment {
             t1v.setTextSize(12);
             t1v.setLayoutParams(lp1);
             t1v.setGravity(Gravity.CENTER);
-            t1v.setPadding(10,0,10,0);
+            t1v.setPadding(25,0,15,0);
             tbrow.addView(t1v);
             //*Segundo campo
-            lp1 = new TableRow.LayoutParams(0, TableRow.LayoutParams.WRAP_CONTENT, 3f);
+            lp1 = new TableRow.LayoutParams(0, TableRow.LayoutParams.WRAP_CONTENT, 4f);
             TextView t2v = new TextView(getContext());
             t2v.setText("Pto. Vallarta - Guadalajara");
             t2v.setTextColor(Color.WHITE);
@@ -173,7 +173,7 @@ public class HomeFragment extends Fragment {
             TableRow.LayoutParams lp1 = new TableRow.LayoutParams();
             lp1.weight = 2;
 
-            lp1 = new TableRow.LayoutParams(0, TableRow.LayoutParams.WRAP_CONTENT, 2f);
+            lp1 = new TableRow.LayoutParams(0, TableRow.LayoutParams.WRAP_CONTENT, 1f);
             TextView t1v = new TextView(getContext());
             //*Primer campo
             t1v.setText(""+i);
@@ -181,10 +181,10 @@ public class HomeFragment extends Fragment {
             t1v.setTextSize(12);
             t1v.setLayoutParams(lp1);
             t1v.setGravity(Gravity.CENTER);
-            t1v.setPadding(10,0,10,0);
+            t1v.setPadding(25,0,15,0);
             tbrow.addView(t1v);
             //*Segundo campo
-            lp1 = new TableRow.LayoutParams(0, TableRow.LayoutParams.WRAP_CONTENT, 3f);
+            lp1 = new TableRow.LayoutParams(0, TableRow.LayoutParams.WRAP_CONTENT, 4f);
             TextView t2v = new TextView(getContext());
             t2v.setText("Calfornia - Chiapas");
             t2v.setTextColor(Color.WHITE);
