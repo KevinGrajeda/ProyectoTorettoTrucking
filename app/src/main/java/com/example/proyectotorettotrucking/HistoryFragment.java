@@ -17,8 +17,6 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
-import android.widget.Toast;
-import java.lang.reflect.Array;
 import java.util.Arrays;
 
 /**
@@ -197,6 +195,10 @@ public class HistoryFragment extends Fragment {
                                     +"Marca: "+TRACTORES[i].getMarca()+"\n"
                                     +"Propio: "+propioT+"\n"
                                     +"Capacidad: "+TRACTORES[i].getCapacidad()+"\n"
+                                    +"Llantas: "+TRACTORES[i].getLlantas()+"\n"
+                                    +"Longitud caja: "+TRACTORES[i].getLongitudCaja()+"\n"
+                                    +"Suspension: "+TRACTORES[i].getSuspension()+"\n"
+                                    +"Traccion: "+TRACTORES[i].getTraccion()+"\n"
                                     +"Tipo: "+TRACTORES[i].getTipo()+"\n"
                                     +"Refrigerado: "+refrigerado);
                             break;
