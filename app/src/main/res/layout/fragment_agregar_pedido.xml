@@ -41,9 +41,9 @@
 
             <Spinner
                 android:id="@+id/spnProductos"
-                android:layout_width="149dp"
+                android:layout_width="175dp"
                 android:layout_height="45dp"
-                android:layout_marginRight="5dp"
+                android:layout_marginRight="25dp"
                 android:backgroundTint="@color/naranjaToretto"
                 android:dropDownSelector="@color/grisToretto" />
 
@@ -147,24 +147,28 @@
                     android:textColor="@color/white" />
 
                 <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="Vehiculo:"
+                    android:textColor="@color/gray" />
+                <TextView
                     android:id="@+id/txtVehiculo"
                     android:layout_width="match_parent"
-                    android:layout_height="35dp"
-                    android:layout_marginTop="10dp"
-                    android:gravity="bottom"
-                    android:text="Vehiculo:"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-                    android:textColor="@color/gray" />
+                    android:layout_height="40dp"
+                    android:background="@drawable/custom_edittex_v2_uf"/>
 
                 <TextView
                     android:id="@+id/textView11"
                     android:layout_width="match_parent"
-                    android:layout_height="35dp"
+                    android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:gravity="bottom"
                     android:text="Precio:"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                     android:textColor="@color/gray" />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:background="@drawable/custom_edittex_v2_uf"/>
 
             </LinearLayout>
         </TableRow>
