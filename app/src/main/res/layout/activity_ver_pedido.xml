@@ -4,67 +4,31 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/grisToretto"
-    tools:context=".AgregarPedidoFragment">
+    tools:context=".VerPedido"
+    android:background="@color/grisToretto">
+
+    <TextView
+        android:id="@+id/txtPedidoStatus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="132dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="128dp"
+        android:text="Ejemplo"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textColor="@color/naranjaToretto"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.464"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TableLayout
+        android:id="@+id/tableLayout"
         android:layout_width="320dp"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.12000000">
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <TextView
-                android:id="@+id/textView"
-                android:layout_width="109dp"
-                android:layout_height="wrap_content"
-                android:text="Producto"
-                android:textColor="@color/gray" />
-
-            <TextView
-                android:id="@+id/textView3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Cantidad"
-                android:textColor="@color/gray" />
-        </TableRow>
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="45dp">
-
-            <Spinner
-                android:id="@+id/spnProductos"
-                android:layout_width="149dp"
-                android:layout_height="45dp"
-                android:layout_marginRight="5dp"
-                android:backgroundTint="@color/naranjaToretto"
-                android:dropDownSelector="@color/grisToretto" />
-
-            <EditText
-                android:id="@+id/txtCantidad"
-                android:layout_width="77dp"
-                android:layout_height="45dp"
-                android:background="@drawable/custom_edittex_v2"
-                android:ems="10"
-                android:inputType="number"
-                android:textColor="@color/white" />
-
-            <ImageButton
-                android:id="@+id/btnAgregarProducto"
-                android:layout_width="44dp"
-                android:layout_height="45dp"
-                android:background="@android:color/transparent"
-                app:srcCompat="@drawable/ic_baseline_add_24"
-                app:tint="@color/naranjaToretto" />
-
-        </TableRow>
+        app:layout_constraintTop_toBottomOf="@+id/txtPedidoStatus">
 
         <TableRow
             android:layout_width="match_parent"
@@ -78,7 +42,7 @@
 
                 <ScrollView
                     android:layout_width="match_parent"
-                    android:layout_height="83dp"
+                    android:layout_height="129dp"
                     android:layout_marginTop="10dp"
                     android:background="@drawable/custom_edittex_v2">
 
@@ -86,8 +50,10 @@
                         android:id="@+id/txtVerProductosAgregados"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Productos agregados:"
 
+                        android:editable="false"
+                        android:enabled="false"
+                        android:text="Productos agregados:"
                         android:textColor="@color/gray" />
 
                 </ScrollView>
@@ -101,14 +67,17 @@
                     android:text="Origen"
                     android:textColor="@color/gray" />
 
-                <Spinner
-                    android:id="@+id/spnOrigenes"
+                <EditText
+                    android:id="@+id/txtVerOrigen"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
-                    android:layout_marginTop="10dp"
-                    android:backgroundTint="@color/naranjaToretto"
-                    android:dropDownSelector="@color/grisToretto"
-                    android:foregroundTint="@color/naranjaToretto" />
+                    android:layout_weight="2"
+                    android:background="@drawable/custom_edittex_v2"
+                    android:editable="false"
+                    android:ems="10"
+                    android:enabled="false"
+                    android:inputType="textPersonName"
+                    android:textColor="@color/white" />
 
                 <TextView
                     android:id="@+id/textView7"
@@ -119,13 +88,17 @@
                     android:text="Destino"
                     android:textColor="@color/gray" />
 
-                <Spinner
-                    android:id="@+id/spnDestinos"
+                <EditText
+                    android:id="@+id/txtVerDestino"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
-                    android:backgroundTint="@color/naranjaToretto"
-                    android:dropDownSelector="@color/grisToretto"
-                    android:foregroundTint="@color/naranjaToretto" />
+                    android:layout_weight="2"
+                    android:background="@drawable/custom_edittex_v2"
+                    android:editable="false"
+                    android:ems="10"
+                    android:enabled="false"
+                    android:inputType="textPersonName"
+                    android:textColor="@color/white" />
 
                 <TextView
                     android:id="@+id/textView8"
@@ -142,7 +115,9 @@
                     android:layout_height="40dp"
                     android:layout_weight="2"
                     android:background="@drawable/custom_edittex_v2"
+                    android:editable="false"
                     android:ems="10"
+                    android:enabled="false"
                     android:inputType="textPersonName"
                     android:textColor="@color/white" />
 
@@ -171,4 +146,24 @@
 
 
     </TableLayout>
+
+    <Button
+        android:id="@+id/btnAccion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="45dp"
+        android:text="Pedido Entregado"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tableLayout" />
+
+    <Button
+        android:id="@+id/btnBack"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="46dp"
+        android:layout_marginTop="20dp"
+        android:text="Volver"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tableLayout" />
 </androidx.constraintlayout.widget.ConstraintLayout>

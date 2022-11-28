@@ -147,9 +147,20 @@ public class HomeFragment extends Fragment {
             t4v.setPadding(33,0,0,0);
             tbrow.addView(t4v);
 
+            t4v.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent navegacion = null;
+                    navegacion = new Intent(getContext(), VerPedido.class);
+                    navegacion.putExtra("status", 1);
+                    startActivity(navegacion);
+                }
+            });
+
             tl.addView(tbrow);
 
         }
+
 
 
         TableLayout tl2 = view.findViewById(R.id.tblViajesTerminados);
@@ -204,6 +215,16 @@ public class HomeFragment extends Fragment {
             t4v.setGravity(Gravity.CENTER);
             t4v.setPadding(33,0,0,0);
             tbrow.addView(t4v);
+
+            t4v.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent navegacion = null;
+                    navegacion = new Intent(getContext(), VerPedido.class);
+                    navegacion.putExtra("status", 2);
+                    startActivity(navegacion);
+                }
+            });
 
             tl2.addView(tbrow);
 

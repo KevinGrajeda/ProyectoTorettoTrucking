@@ -18,7 +18,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.proyectotorettotrucking.clases.Camion;
-import com.example.proyectotorettotrucking.clases.Producto;
 
 public class AgregarPedidoFragment extends Fragment {
 
@@ -49,8 +48,8 @@ public class AgregarPedidoFragment extends Fragment {
         spnOrigenes = view.findViewById(R.id.spnOrigenes);
         spnDestinos = view.findViewById(R.id.spnDestinos);
         txtCantidad = view.findViewById(R.id.txtCantidad);
-        txtProductosAgregados = view.findViewById(R.id.txtProductosAgregados);
-        txtVehiculo = view.findViewById(R.id.txtVehiculo);
+        txtProductosAgregados = view.findViewById(R.id.txtVerProductosAgregados);
+        txtVehiculo = view.findViewById(R.id.txtVerVehiculo);
 
         view.findViewById(R.id.btnAgregarProducto).setOnClickListener(new View.OnClickListener() {
             @Override
