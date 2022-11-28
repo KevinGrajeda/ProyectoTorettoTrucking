@@ -219,16 +219,20 @@ public class HomeFragment extends Fragment {
             t4v.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Intent navegacion = null;
-                    navegacion = new Intent(getContext(), VerPedido.class);
-                    navegacion.putExtra("status", 2);
-                    startActivity(navegacion);
+                    Navegacion();
                 }
             });
 
             tl2.addView(tbrow);
 
         }
+    }
+    void Navegacion(){
+        Intent navegacion = null;
+        navegacion = new Intent(getContext(), VerPedido.class);
+        navegacion.putExtra("status", 2);
+        startActivity(navegacion);
+        getActivity().finish();
     }
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
