@@ -2,16 +2,15 @@ package com.example.proyectotorettotrucking.clases;
 
 public class Pedido {
 
-    private int id,noPedido,destino,origen,productos,vehiculo,status;
-    private String descripcion;
+    private int id,noPedido,destino,origen,vehiculo,status;
+    private String descripcion,productos;
     private float precio;
 
     public Pedido() {
     }
 
-    public Pedido(int id, int noPedido, int destino, int origen, int productos, int vehiculo, int status, String descripcion, float precio) {
+    public Pedido(int id, int destino, int origen, String productos, int vehiculo, int status, String descripcion, float precio) {
         this.id = id;
-        this.noPedido = noPedido;
         this.destino = destino;
         this.origen = origen;
         this.productos = productos;
@@ -53,11 +52,11 @@ public class Pedido {
         this.origen = origen;
     }
 
-    public int getProductos() {
+    public String getProductos() {
         return productos;
     }
 
-    public void setProductos(int productos) {
+    public void setProductos(String productos) {
         this.productos = productos;
     }
 

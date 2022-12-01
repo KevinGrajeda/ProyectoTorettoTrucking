@@ -2,8 +2,12 @@ package com.example.proyectotorettotrucking;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentActivity;
+import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.ViewPager;
+import androidx.viewpager2.adapter.FragmentStateAdapter;
 import androidx.viewpager2.widget.ViewPager2;
 
 import android.content.Intent;
@@ -12,7 +16,11 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Spinner;
+import android.widget.TextView;
+import android.widget.Toast;
 
+import com.example.proyectotorettotrucking.clases.Pedido;
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
 
@@ -81,13 +89,18 @@ public class MenuActivity extends AppCompatActivity {
         findViewById(R.id.btnAgregar).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                viewsContainer.setCurrentItem(3);
+                if(viewsContainer.getCurrentItem()==2){
+                    ((AgregarPedidoFragment)getSupportFragmentManager().findFragmentByTag("f2")).terminarPedido();
+                }else{
+                    viewsContainer.setCurrentItem(2);
+                }
             }
         });
         //* Agregado por Arturo Mares para tener en esta clase la funcionalidad del logout
 
 
     }
+
     //* Función para hacer logout
     public void salir(){
         SharedPreferences preferences = getSharedPreferences("usr.dat",MODE_PRIVATE);

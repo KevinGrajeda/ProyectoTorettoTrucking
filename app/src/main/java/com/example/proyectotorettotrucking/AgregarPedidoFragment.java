@@ -18,15 +18,19 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.proyectotorettotrucking.clases.Camion;
+import com.example.proyectotorettotrucking.clases.Pedido;
 
 public class AgregarPedidoFragment extends Fragment {
 
     Spinner spnProductos, spnOrigenes, spnDestinos;
-    EditText txtCantidad;
-    TextView txtProductosAgregados, txtVehiculo;
+    EditText txtCantidad,txtDescripcion;
+    TextView txtVerProductosAgregados, txtVehiculo;
+    Camion camionSeleccionado = new Camion();
+
 
     String productosAgregados = "Productos agregados:\n";
     float pesoTotal = 0;
+    float precio=0;
 
     public AgregarPedidoFragment() {
     }
@@ -48,7 +52,8 @@ public class AgregarPedidoFragment extends Fragment {
         spnOrigenes = view.findViewById(R.id.spnOrigenes);
         spnDestinos = view.findViewById(R.id.spnDestinos);
         txtCantidad = view.findViewById(R.id.txtCantidad);
-        txtProductosAgregados = view.findViewById(R.id.txtVerProductosAgregados);
+        txtVerProductosAgregados = view.findViewById(R.id.txtVerProductosAgregados);
+        txtDescripcion = view.findViewById(R.id.txtVerDescripcion);
         txtVehiculo = view.findViewById(R.id.txtVerVehiculo);
 
         view.findViewById(R.id.btnAgregarProducto).setOnClickListener(new View.OnClickListener() {
@@ -90,8 +95,8 @@ public class AgregarPedidoFragment extends Fragment {
         float peso = cantidad * PRODUCTOS[posicionProducto].getPeso();
         pesoTotal += peso;
         productosAgregados += cantidad + " " + PRODUCTOS[posicionProducto].getNombre() + "\n";
-        txtProductosAgregados.setText(productosAgregados + "\nPeso total: " + (pesoTotal / 1000) + "Kg");
-        Camion camionSeleccionado = null;
+        txtVerProductosAgregados.setText(productosAgregados + "\nPeso total: " + (pesoTotal / 1000) + "Kg");
+
         for (Camion camion : CAMIONES) {
             if ((camion.getCapacidad() * 1000) < pesoTotal) {
                 break;
@@ -104,5 +109,17 @@ public class AgregarPedidoFragment extends Fragment {
             return;
         }
         txtVehiculo.setText("Vehiculo: " + camionSeleccionado.getTipo());
+    }
+    public void terminarPedido(){
+        Pedido pedido=new Pedido();
+        pedido.setProductos(productosAgregados);
+        pedido.setOrigen(spnOrigenes.getSelectedItemPosition());
+        pedido.setDestino(spnDestinos.getSelectedItemPosition());
+        pedido.setVehiculo(camionSeleccionado.getId());
+        pedido.setPrecio(precio);
+        pedido.setDescripcion(txtDescripcion.getText().toString());
+        pedido.setStatus(0);
+
+        Toast.makeText(getActivity(), pedido.getProductos()+","+pedido.getDestino(), Toast.LENGTH_SHORT).show();
     }
 }
