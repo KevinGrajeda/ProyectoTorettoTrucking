@@ -17,8 +17,11 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.proyectotorettotrucking.baseDeDatos.ControladorBaseDatos;
 import com.example.proyectotorettotrucking.clases.Camion;
 import com.example.proyectotorettotrucking.clases.Pedido;
+
+import java.util.Objects;
 
 public class AgregarPedidoFragment extends Fragment {
 
@@ -119,7 +122,7 @@ public class AgregarPedidoFragment extends Fragment {
         pedido.setPrecio(precio);
         pedido.setDescripcion(txtDescripcion.getText().toString());
         pedido.setStatus(0);
-
-        Toast.makeText(getActivity(), pedido.getProductos()+","+pedido.getDestino(), Toast.LENGTH_SHORT).show();
+        ControladorBaseDatos controlador=((MenuActivity) requireActivity()).controlador;
+        controlador.agregarPedido(pedido);
     }
 }

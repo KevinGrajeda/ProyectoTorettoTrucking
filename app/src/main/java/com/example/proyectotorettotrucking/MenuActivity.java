@@ -2,12 +2,6 @@ package com.example.proyectotorettotrucking;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentActivity;
-import androidx.fragment.app.FragmentPagerAdapter;
-import androidx.recyclerview.widget.RecyclerView;
-import androidx.viewpager.widget.ViewPager;
-import androidx.viewpager2.adapter.FragmentStateAdapter;
 import androidx.viewpager2.widget.ViewPager2;
 
 import android.content.Intent;
@@ -16,19 +10,18 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Spinner;
-import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.proyectotorettotrucking.baseDeDatos.ControladorBaseDatos;
 import com.example.proyectotorettotrucking.clases.Pedido;
 import com.google.android.material.tabs.TabLayout;
-import com.google.android.material.tabs.TabLayoutMediator;
 
 public class MenuActivity extends AppCompatActivity {
 
     TabLayout menu;
     ViewPager2 viewsContainer;
     FragmentControler menuCtrl;
+    ControladorBaseDatos controlador;
 
     //* Agregado para el top menu
     @Override
@@ -38,17 +31,21 @@ public class MenuActivity extends AppCompatActivity {
 
         return true;
     }
+
     //* listeners para eñ top menu
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         int id = item.getItemId();
         Intent navegacion = null;
-        switch (id){
+        switch (id) {
             case R.id.btnLogout:
                 salir();
                 break;
+            case R.id.btnReset:
+                controlador.reset();
+                break;
         }
-        if (navegacion != null){
+        if (navegacion != null) {
             startActivity(navegacion);
         }
         return super.onOptionsItemSelected(item);
@@ -61,7 +58,7 @@ public class MenuActivity extends AppCompatActivity {
         menu = findViewById(R.id.bottom_Tab);
         viewsContainer = findViewById(R.id.views_container);
 
-        menuCtrl = new FragmentControler(getSupportFragmentManager(),getLifecycle());
+        menuCtrl = new FragmentControler(getSupportFragmentManager(), getLifecycle());
         viewsContainer.setAdapter(menuCtrl);
         viewsContainer.registerOnPageChangeCallback(new ViewPager2.OnPageChangeCallback() {
             @Override
@@ -89,27 +86,32 @@ public class MenuActivity extends AppCompatActivity {
         findViewById(R.id.btnAgregar).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(viewsContainer.getCurrentItem()==2){
-                    ((AgregarPedidoFragment)getSupportFragmentManager().findFragmentByTag("f2")).terminarPedido();
-                }else{
+                if (viewsContainer.getCurrentItem() == 2) {
+                    ((AgregarPedidoFragment) getSupportFragmentManager().findFragmentByTag("f2")).terminarPedido();
+                } else {
                     viewsContainer.setCurrentItem(2);
                 }
             }
         });
         //* Agregado por Arturo Mares para tener en esta clase la funcionalidad del logout
 
+        controlador = new ControladorBaseDatos(this);
+        /*
+        for (Pedido pedido : controlador.getPedidos()) {
 
+        }*/
     }
 
     //* Función para hacer logout
-    public void salir(){
-        SharedPreferences preferences = getSharedPreferences("usr.dat",MODE_PRIVATE);
+    public void salir() {
+        SharedPreferences preferences = getSharedPreferences("usr.dat", MODE_PRIVATE);
         SharedPreferences.Editor editor = preferences.edit();
         editor.clear();
         editor.apply();
-        Intent logout = new Intent(this,MainActivity.class);
+        Intent logout = new Intent(this, MainActivity.class);
         logout.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(logout);
         this.finish();
     }
+
 }
