@@ -20,7 +20,11 @@ import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
 
+import com.example.proyectotorettotrucking.baseDeDatos.ControladorBaseDatos;
+import com.example.proyectotorettotrucking.clases.Pedido;
 import com.google.android.material.button.MaterialButton;
+
+import java.util.ArrayList;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -33,6 +37,7 @@ public class HomeFragment extends Fragment {
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
+    public ArrayList<Pedido> pedidos;
 
     // TODO: Rename and change types of parameters
     private String mParam1;
@@ -93,7 +98,17 @@ public class HomeFragment extends Fragment {
     </TableRow>*/
 
     public void tableinit(View view){
+        ControladorBaseDatos controlador = ((MenuActivity) requireActivity()).controlador;
+        this.pedidos = controlador.getPedidos();
+        ArrayList<Pedido> pedidosAbiertos = new ArrayList<Pedido>();
+        ArrayList<Pedido> pedidosCerrados = new ArrayList<Pedido>();
+        for (Pedido pedido:pedidos){
+            if (pedido.getStatus() == 0){
 
+            }else{
+
+            }
+        }
         TableLayout tl = view.findViewById(R.id.tblViajesActuales);
         for (int i = 25; i > 20; i--) {
             //Table Row

@@ -11,40 +11,35 @@
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="100dp"
-        android:text="@string/login"
+        android:layout_marginTop="22dp"
+        android:fontFamily="monospace"
+        android:text="@string/loginTitle"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         android:textColor="@color/naranjaToretto"
         android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
-    <EditText
-        android:id="@+id/txtUsuario"
-        android:layout_width="260dp"
-        android:layout_height="48dp"
-        android:layout_marginTop="35dp"
-        android:background="@drawable/custom_edittext"
-        android:drawableStart="@drawable/ic_user"
-        android:drawablePadding="8dp"
-        android:drawableTint="@color/white"
-        android:ems="10"
-        android:hint="@string/usuario"
-        android:importantForAutofill="no"
-        android:inputType="textPersonName"
-        android:textColor="@color/white"
-        android:textColorHint="@color/gray"
-        app:layout_constraintEnd_toEndOf="parent"
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/button"
+        android:layout_width="110dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="44dp"
+        android:layout_marginTop="60dp"
+        android:backgroundTint="@color/naranjaToretto"
+        android:onClick="salirMenu"
+        android:text="salir"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+        app:layout_constraintTop_toBottomOf="@+id/txtPassword" />
 
     <EditText
         android:id="@+id/txtPassword"
         android:layout_width="260dp"
         android:layout_height="52dp"
-        android:layout_marginTop="35dp"
+        android:layout_marginTop="32dp"
         android:background="@drawable/custom_edittext"
         android:drawableStart="@drawable/ic_lock"
         android:drawablePadding="8dp"
@@ -56,32 +51,54 @@
         android:textColor="@color/white"
         android:textColorHint="@color/gray"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtUsuario" />
-
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/button"
-        android:layout_width="110dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="50dp"
-        android:layout_marginTop="60dp"
-        android:backgroundTint="@color/naranjaToretto"
-        android:onClick="salirMenu"
-        android:text="salir"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtPassword" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/button2"
         android:layout_width="110dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="60dp"
-        android:layout_marginEnd="50dp"
+        android:layout_marginEnd="48dp"
+        android:backgroundTint="@color/naranjaToretto"
         android:onClick="ingresarMenu"
         android:text="@string/ingresar"
         android:textColor="@color/varGrisToretto"
-        android:backgroundTint="@color/naranjaToretto"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtPassword" />
+
+    <EditText
+        android:id="@+id/txtUsuario"
+        android:layout_width="260dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="32dp"
+        android:background="@drawable/custom_edittext"
+        android:drawableStart="@drawable/ic_user"
+        android:drawablePadding="8dp"
+        android:drawableTint="@color/white"
+        android:ems="10"
+        android:hint="@string/usuario"
+        android:importantForAutofill="no"
+        android:inputType="textPersonName"
+        android:textColor="@color/white"
+        android:textColorHint="@color/gray"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="139dp"
+        android:layout_height="121dp"
+        android:layout_marginStart="136dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="136dp"
+        android:tint="@color/naranjaToretto"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ttlogo" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
