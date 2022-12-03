@@ -1,15 +1,17 @@
 package com.example.proyectotorettotrucking.clases;
 
 public class Sucursal {
-    private int id;
-    private String nombre, estado,ciudad,pais;
+    private int id, x, y;
+    private String nombre, estado, ciudad, pais;
 
-    public Sucursal(int id, String nombre, String estado, String ciudad, String pais) {
+    public Sucursal(int id, String nombre, String estado, String ciudad, String pais, int x, int y) {
         this.id = id;
         this.nombre = nombre;
         this.estado = estado;
         this.ciudad = ciudad;
         this.pais = pais;
+        this.x = x;
+        this.y = y;
     }
 
     public Sucursal() {
@@ -54,5 +56,21 @@ public class Sucursal {
 
     public void setPais(String pais) {
         this.pais = pais;
+    }
+
+    public int getX() {
+        return x;
+    }
+
+    public void setX(int x) {
+        this.x = x;
+    }
+
+    public int getY() {
+        return y;
+    }
+
+    public void setY(int y) {
+        this.y = y;
     }
 }

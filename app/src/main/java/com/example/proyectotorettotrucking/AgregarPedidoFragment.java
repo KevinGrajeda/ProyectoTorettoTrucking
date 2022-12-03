@@ -11,6 +11,7 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
@@ -20,20 +21,19 @@ import android.widget.Toast;
 import com.example.proyectotorettotrucking.baseDeDatos.ControladorBaseDatos;
 import com.example.proyectotorettotrucking.clases.Camion;
 import com.example.proyectotorettotrucking.clases.Pedido;
-
-import java.util.Objects;
+import com.example.proyectotorettotrucking.clases.Sucursal;
 
 public class AgregarPedidoFragment extends Fragment {
 
     Spinner spnProductos, spnOrigenes, spnDestinos;
-    EditText txtCantidad,txtDescripcion;
-    TextView txtVerProductosAgregados, txtVehiculo;
+    EditText txtCantidad, txtDescripcion;
+    TextView txtVerProductosAgregados, txtVehiculo, txtPrecio;
     Camion camionSeleccionado = new Camion();
 
 
     String productosAgregados = "Productos agregados:\n";
     float pesoTotal = 0;
-    float precio=0;
+    float precio = 0;
 
     public AgregarPedidoFragment() {
     }
@@ -48,7 +48,6 @@ public class AgregarPedidoFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_agregar_pedido, container, false);
 
         spnProductos = view.findViewById(R.id.spnProductos);
@@ -58,13 +57,38 @@ public class AgregarPedidoFragment extends Fragment {
         txtVerProductosAgregados = view.findViewById(R.id.txtVerProductosAgregados);
         txtDescripcion = view.findViewById(R.id.txtVerDescripcion);
         txtVehiculo = view.findViewById(R.id.txtVerVehiculo);
+        txtPrecio = view.findViewById(R.id.txtVerPrecio);
 
         view.findViewById(R.id.btnAgregarProducto).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                AgregarProducto();
+                agregarProducto();
+                calcularPrecio();
             }
         });
+        spnOrigenes.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                calcularPrecio();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+        spnDestinos.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                calcularPrecio();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+
 
         String[] nombresProducto = new String[PRODUCTOS.length];
         String[] nombresSucursales = new String[SUCURSALES.length];
@@ -86,7 +110,17 @@ public class AgregarPedidoFragment extends Fragment {
         return view;
     }
 
-    public void AgregarProducto() {
+    private void calcularPrecio() {
+        Sucursal origen = SUCURSALES[spnOrigenes.getSelectedItemPosition()];
+        Sucursal destino = SUCURSALES[spnDestinos.getSelectedItemPosition()];
+        float distancia = (float) Math.sqrt(Math.pow(destino.getX() - origen.getX(), 2) + Math.pow(destino.getY() - origen.getY(), 2));
+        precio = (distancia * 10000) + ((pesoTotal / 1000) * 10);
+        if (origen.getId() != destino.getId()) {
+            txtPrecio.setText("" + precio);
+        }
+    }
+
+    public void agregarProducto() {
         int cantidad;
         try {
             cantidad = Integer.parseInt(txtCantidad.getText().toString());
@@ -111,10 +145,23 @@ public class AgregarPedidoFragment extends Fragment {
             Toast.makeText(getActivity(), "no existe camion para este peso", Toast.LENGTH_SHORT).show();
             return;
         }
-        txtVehiculo.setText("Vehiculo: " + camionSeleccionado.getTipo());
+        txtVehiculo.setText(camionSeleccionado.getTipo());
     }
-    public void terminarPedido(){
-        Pedido pedido=new Pedido();
+
+    public void terminarPedido() {
+        if (spnOrigenes.getSelectedItemPosition() == spnDestinos.getSelectedItemPosition()) {
+            Toast.makeText(getActivity(), "no puedes tener el mismo origen y destino", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        if (pesoTotal == 0) {
+            Toast.makeText(getActivity(), "no hay productos agregados", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        if(txtDescripcion.getText().toString().equals("")){
+            Toast.makeText(getActivity(), "agrega una descripcion", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        Pedido pedido = new Pedido();
         pedido.setProductos(productosAgregados);
         pedido.setOrigen(spnOrigenes.getSelectedItemPosition());
         pedido.setDestino(spnDestinos.getSelectedItemPosition());
@@ -122,7 +169,22 @@ public class AgregarPedidoFragment extends Fragment {
         pedido.setPrecio(precio);
         pedido.setDescripcion(txtDescripcion.getText().toString());
         pedido.setStatus(0);
-        ControladorBaseDatos controlador=((MenuActivity) requireActivity()).controlador;
+        ControladorBaseDatos controlador = ((MenuActivity) requireActivity()).controlador;
         controlador.agregarPedido(pedido);
+        limpiar();
+    }
+    public void limpiar(){
+        productosAgregados = "Productos agregados:\n";
+        pesoTotal = 0;
+        precio = 0;
+        camionSeleccionado = new Camion();
+        spnProductos.setSelection(0);
+        spnOrigenes.setSelection(0);
+        spnDestinos.setSelection(0);
+        txtCantidad.setText("");
+        txtVerProductosAgregados.setText(productosAgregados);
+        txtPrecio.setText("");
+        txtVehiculo.setText("");
+        txtDescripcion.setText("");
     }
 }

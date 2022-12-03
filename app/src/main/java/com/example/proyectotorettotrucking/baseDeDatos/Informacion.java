@@ -23,11 +23,11 @@ public class Informacion {
             new Producto(9, "USB", "Usb 16gb", "Kingston", 700),
     };
     public static final Sucursal[] SUCURSALES = {
-            new Sucursal(0, "Puerto Vallarta", "Jalisco", "Puerto vallarta", "Mexico"),
-            new Sucursal(1, "Ciudad de México", "Ciudad de México", "Ciudad de México", "México"),
-            new Sucursal(2, "Manzanillo", "Colima", "Manzanillo", "México"),
-            new Sucursal(3, "Tijuana", "Baja California", "Tijuana", "México"),
-            new Sucursal(4, "California", "California", "Los Angeles", "USA"),
+            new Sucursal(0, "Puerto Vallarta", "Jalisco", "Puerto vallarta", "Mexico",5,2),
+            new Sucursal(1, "Ciudad de México", "Ciudad de México", "Ciudad de México", "México",7,1),
+            new Sucursal(2, "Manzanillo", "Colima", "Manzanillo", "México",4,0),
+            new Sucursal(3, "Tijuana", "Baja California", "Tijuana", "México",1,6),
+            new Sucursal(4, "California", "California", "Los Angeles", "USA",0,7),
     };
     public static final Tractor[] TRACTORES = {
             new Tractor(0, new int[]{2, 3, 15}, "DEA86", "CHEVRON", false, 22000, "Caja", "15 metros", "Neumatica", "Libre", 12, false),

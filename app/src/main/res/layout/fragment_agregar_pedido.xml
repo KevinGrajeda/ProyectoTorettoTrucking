@@ -8,178 +8,188 @@
     android:background="@color/grisToretto"
     tools:context=".AgregarPedidoFragment">
 
-    <TableLayout
-        android:layout_width="320dp"
-        android:layout_height="wrap_content"
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="90dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.12000000">
+        app:layout_constraintTop_toTopOf="parent">
 
-        <TableRow
+        <TableLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content">
 
-            <TextView
-                android:id="@+id/textView"
-                android:layout_width="109dp"
-                android:layout_height="wrap_content"
-                android:text="Producto"
-                android:textColor="@color/gray" />
-
-            <TextView
-                android:id="@+id/textView3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Cantidad"
-                android:textColor="@color/gray" />
-        </TableRow>
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="45dp">
-
-            <Spinner
-                android:id="@+id/spnProductos"
-                android:layout_width="175dp"
-                android:layout_height="45dp"
-                android:layout_marginRight="25dp"
-                android:backgroundTint="@color/naranjaToretto"
-                android:dropDownSelector="@color/grisToretto" />
-
-            <EditText
-                android:id="@+id/txtCantidad"
-                android:layout_width="77dp"
-                android:layout_height="45dp"
-                android:background="@drawable/custom_edittex_v2"
-                android:ems="10"
-                android:inputType="number"
-                android:textColor="@color/white" />
-
-            <ImageButton
-                android:id="@+id/btnAgregarProducto"
-                android:layout_width="44dp"
-                android:layout_height="45dp"
-                android:background="@android:color/transparent"
-                app:srcCompat="@drawable/ic_baseline_add_24"
-                app:tint="@color/naranjaToretto" />
-
-        </TableRow>
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <LinearLayout
-                android:layout_width="10dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:orientation="vertical">
-
-                <ScrollView
-                    android:layout_width="match_parent"
-                    android:layout_height="83dp"
-                    android:layout_marginTop="10dp"
-                    android:background="@drawable/custom_edittex_v2">
-
-                    <TextView
-                        android:id="@+id/txtVerProductosAgregados"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Productos agregados:"
-
-                        android:textColor="@color/gray" />
-
-                </ScrollView>
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
 
                 <TextView
-                    android:id="@+id/textView6"
-                    android:layout_width="match_parent"
-                    android:layout_height="25dp"
-                    android:layout_marginTop="10dp"
-                    android:gravity="bottom"
-                    android:text="Origen"
+                    android:id="@+id/textView"
+                    android:layout_width="109dp"
+                    android:layout_height="wrap_content"
+                    android:text="Producto"
                     android:textColor="@color/gray" />
+
+                <TextView
+                    android:id="@+id/textView3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Cantidad"
+                    android:textColor="@color/gray" />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="45dp">
 
                 <Spinner
-                    android:id="@+id/spnOrigenes"
-                    android:layout_width="match_parent"
-                    android:layout_height="40dp"
-                    android:layout_marginTop="10dp"
+                    android:id="@+id/spnProductos"
+                    android:layout_width="175dp"
+                    android:layout_height="45dp"
+                    android:layout_marginRight="25dp"
                     android:backgroundTint="@color/naranjaToretto"
-                    android:dropDownSelector="@color/grisToretto"
-                    android:foregroundTint="@color/naranjaToretto" />
-
-                <TextView
-                    android:id="@+id/textView7"
-                    android:layout_width="match_parent"
-                    android:layout_height="25dp"
-                    android:layout_marginTop="10dp"
-                    android:gravity="bottom"
-                    android:text="Destino"
-                    android:textColor="@color/gray" />
-
-                <Spinner
-                    android:id="@+id/spnDestinos"
-                    android:layout_width="match_parent"
-                    android:layout_height="40dp"
-                    android:backgroundTint="@color/naranjaToretto"
-                    android:dropDownSelector="@color/grisToretto"
-                    android:foregroundTint="@color/naranjaToretto" />
-
-                <TextView
-                    android:id="@+id/textView8"
-                    android:layout_width="match_parent"
-                    android:layout_height="25dp"
-                    android:layout_marginTop="10dp"
-                    android:gravity="bottom"
-                    android:text="Descripcion"
-                    android:textColor="@color/gray" />
+                    android:dropDownSelector="@color/grisToretto" />
 
                 <EditText
-                    android:id="@+id/txtVerDescripcion"
-                    android:layout_width="match_parent"
-                    android:layout_height="40dp"
-                    android:layout_weight="2"
+                    android:id="@+id/txtCantidad"
+                    android:layout_width="77dp"
+                    android:layout_height="45dp"
                     android:background="@drawable/custom_edittex_v2"
                     android:ems="10"
-                    android:inputType="textPersonName"
+                    android:inputType="number"
                     android:textColor="@color/white" />
 
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:text="vehiculo:"
-                    android:textColor="@color/gray" />
+                <ImageButton
+                    android:id="@+id/btnAgregarProducto"
+                    android:layout_width="44dp"
+                    android:layout_height="45dp"
+                    android:background="@android:color/transparent"
+                    app:srcCompat="@drawable/ic_baseline_add_24"
+                    app:tint="@color/naranjaToretto" />
 
-                <TextView
-                    android:id="@+id/txtVerVehiculo"
-                    android:layout_width="match_parent"
+            </TableRow>
 
-                    android:layout_height="40dp"
-                    android:layout_marginTop="10dp"
-                    android:background="@drawable/custom_edittex_v2_uf"
-                    android:textColor="@color/gray" />/>
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <LinearLayout
+                    android:layout_width="10dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <ScrollView
+                        android:layout_width="match_parent"
+                        android:layout_height="83dp"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/custom_edittex_v2">
+
+                        <TextView
+                            android:id="@+id/txtVerProductosAgregados"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Productos agregados:"
+
+                            android:textColor="@color/gray" />
+
+                    </ScrollView>
+
+                    <TextView
+                        android:id="@+id/textView6"
+                        android:layout_width="match_parent"
+                        android:layout_height="25dp"
+                        android:layout_marginTop="10dp"
+                        android:gravity="bottom"
+                        android:text="Origen"
+                        android:textColor="@color/gray" />
+
+                    <Spinner
+                        android:id="@+id/spnOrigenes"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:layout_marginTop="10dp"
+                        android:backgroundTint="@color/naranjaToretto"
+                        android:dropDownSelector="@color/grisToretto"
+                        android:foregroundTint="@color/naranjaToretto" />
+
+                    <TextView
+                        android:id="@+id/textView7"
+                        android:layout_width="match_parent"
+                        android:layout_height="25dp"
+                        android:layout_marginTop="10dp"
+                        android:gravity="bottom"
+                        android:text="Destino"
+                        android:textColor="@color/gray" />
+
+                    <Spinner
+                        android:id="@+id/spnDestinos"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:backgroundTint="@color/naranjaToretto"
+                        android:dropDownSelector="@color/grisToretto"
+                        android:foregroundTint="@color/naranjaToretto" />
+
+                    <TextView
+                        android:id="@+id/textView8"
+                        android:layout_width="match_parent"
+                        android:layout_height="25dp"
+                        android:layout_marginTop="10dp"
+                        android:gravity="bottom"
+                        android:text="Descripcion"
+                        android:textColor="@color/gray" />
+
+                    <EditText
+                        android:id="@+id/txtVerDescripcion"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:layout_weight="2"
+                        android:background="@drawable/custom_edittex_v2"
+                        android:ems="10"
+                        android:inputType="textPersonName"
+                        android:textColor="@color/white" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:text="vehiculo:"
+                        android:textColor="@color/gray" />
+
+                    <TextView
+                        android:id="@+id/txtVerVehiculo"
+                        android:layout_width="match_parent"
+
+                        android:layout_height="40dp"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/custom_edittex_v2_uf"
+                        android:textColor="@color/gray" />/>
 
 
-                <TextView
-                    android:id="@+id/txtVerPrecio"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:text="Precio:"
-                    android:textColor="@color/gray" />
+                    <TextView
+                        android:id="@+id/txtBiew"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:text="Precio:"
+                        android:textColor="@color/gray" />
 
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="40dp"
-                    android:background="@drawable/custom_edittex_v2_uf" />
+                    <TextView
+                        android:id="@+id/txtVerPrecio"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:background="@drawable/custom_edittex_v2_uf" />
 
-            </LinearLayout>
-        </TableRow>
+                </LinearLayout>
+            </TableRow>
 
 
-    </TableLayout>
+        </TableLayout>
+    </ScrollView>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
