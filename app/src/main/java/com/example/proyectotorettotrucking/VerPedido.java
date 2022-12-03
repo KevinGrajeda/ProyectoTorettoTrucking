@@ -85,7 +85,6 @@ public class VerPedido extends AppCompatActivity {
             Toast.makeText(this,"Pedido Finalizado correctamente",Toast.LENGTH_LONG).show();
             Intent navegacion = new Intent(VerPedido.this, MenuActivity.class);
             startActivity(navegacion);
-            HomeFragment.getInstance().tableinit(HomeFragment.getInstance().getView());
             finish();
     }
 }

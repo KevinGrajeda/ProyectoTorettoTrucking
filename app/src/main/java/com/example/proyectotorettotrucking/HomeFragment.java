@@ -2,6 +2,7 @@ package com.example.proyectotorettotrucking;
 
 import static android.content.Context.MODE_PRIVATE;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -263,13 +264,6 @@ public class HomeFragment extends Fragment {
         }
         }
     }
-    void Navegacion(){
-        Intent navegacion = null;
-        navegacion = new Intent(getContext(), VerPedido.class);
-        navegacion.putExtra("status", 2);
-        startActivity(navegacion);
-        getActivity().finish();
-    }
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -317,8 +311,9 @@ class listenerVerPedido  implements View.OnClickListener
         Intent navegacion = null;
         navegacion =  new Intent(context, VerPedido.class);
         navegacion.putExtra("pedido", pedido);
-        //navegacion.putExtra("controlador", controlador);
         context.startActivity(navegacion);
+        Activity act =(MenuActivity)context;
+        act.finish();
     }
 
 };
