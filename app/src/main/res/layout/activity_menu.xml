@@ -41,7 +41,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:icon="@drawable/ttlogo"
-                android:text="Pedidos"
+                android:text="@string/pedidos"
                 app:tint="#FFFFFF" />
 
             <com.google.android.material.tabs.TabItem

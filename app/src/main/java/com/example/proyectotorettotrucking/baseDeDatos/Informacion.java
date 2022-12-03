@@ -4,6 +4,7 @@ import com.example.proyectotorettotrucking.clases.Camion;
 import com.example.proyectotorettotrucking.clases.Producto;
 import com.example.proyectotorettotrucking.clases.Sucursal;
 import com.example.proyectotorettotrucking.clases.Tractor;
+import com.example.proyectotorettotrucking.clases.Usuario;
 
 public class Informacion {
     private Informacion() {
@@ -42,6 +43,13 @@ public class Informacion {
             new Camion(3, new int[]{2, 3, 8}, "CRTLO10", "Ford", true, 5000, "Camioneta 5 ton.", true),
             new Camion(4, new int[]{2, 3, 8}, "DACA852", "Ford", true, 3500, "Camioneta 3.5 ton.", true),
             new Camion(5, new int[]{2, 3, 6}, "CNNXA84", "Nissan", true, 1000, "Camioneta 1 ton.", true),
+    };
+
+    public static final Usuario[] USUARIOS = {
+            new Usuario(false,"cobian@toreto.com","cobian",0,0),
+            new Usuario(false,"javier@toreto.com","javier",1,0),
+            new Usuario(false,"arturo@toreto.com","arturo",2,1),
+            new Usuario(false,"kevin@toreto.com","kevin",3,1),
     };
 
 }
