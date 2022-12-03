@@ -2,6 +2,7 @@ package com.example.proyectotorettotrucking;
 
 import static android.content.Context.MODE_PRIVATE;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
@@ -21,9 +22,15 @@ import android.widget.TableRow;
 import android.widget.TextView;
 
 import com.example.proyectotorettotrucking.baseDeDatos.ControladorBaseDatos;
+import com.example.proyectotorettotrucking.baseDeDatos.Informacion;
 import com.example.proyectotorettotrucking.clases.Pedido;
 import com.google.android.material.button.MaterialButton;
 
+import static com.example.proyectotorettotrucking.baseDeDatos.Informacion.CAMIONES;
+import static com.example.proyectotorettotrucking.baseDeDatos.Informacion.PRODUCTOS;
+import static com.example.proyectotorettotrucking.baseDeDatos.Informacion.SUCURSALES;
+
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
@@ -31,6 +38,7 @@ import java.util.ArrayList;
  * Use the {@link HomeFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
+
 public class HomeFragment extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
@@ -38,6 +46,8 @@ public class HomeFragment extends Fragment {
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
     public ArrayList<Pedido> pedidos;
+
+    private static HomeFragment instance = null;
 
     // TODO: Rename and change types of parameters
     private String mParam1;
@@ -69,60 +79,65 @@ public class HomeFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        instance = this;
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
     }
 
+    public static HomeFragment getInstance() {
+        return instance;
+    }
 
-    /*<TextView
-    android:layout_width="0dp"
-    android:layout_height="wrap_content"
-    android:layout_weight="2"
-    android:gravity="center_horizontal"
-    android:padding="10sp"
-    android:text="@string/col1"
-    android:textColor="@color/white"
-    android:textSize="12sp" />
-                <com.google.android.material.button.MaterialButton
-    android:layout_width="0dp"
-    android:layout_height="wrap_content"
-    android:layout_weight="1"
-    android:gravity="center"
-    android:padding="12sp"
-    android:textColor="@color/white"
-    android:textSize="12sp"
-    app:icon="@drawable/ic_baseline_remove_red_eye_24" />
-
-    </TableRow>*/
 
     public void tableinit(View view){
-        ControladorBaseDatos controlador = ((MenuActivity) requireActivity()).controlador;
+        //****** traemos la información del archivo
+        ControladorBaseDatos controlador = ((MenuActivity) requireActivity()).controlador;   //Se trae el objeto desde el MenuActivity
         this.pedidos = controlador.getPedidos();
         ArrayList<Pedido> pedidosAbiertos = new ArrayList<Pedido>();
         ArrayList<Pedido> pedidosCerrados = new ArrayList<Pedido>();
         for (Pedido pedido:pedidos){
-            if (pedido.getStatus() == 0){
-
-            }else{
-
+            if (pedido.getStatus() == 0){ // En tránsito
+                pedidosAbiertos.add(pedido);
+            } if (pedido.getStatus() == 1){ // Teminados
+                pedidosCerrados.add(pedido);
             }
         }
+        // ***** 1ra tabla  (de viajes actuales)
         TableLayout tl = view.findViewById(R.id.tblViajesActuales);
-        for (int i = 25; i > 20; i--) {
-            //Table Row
+        tl.removeAllViews();
+        System.out.println("pedidos Size: "+pedidosAbiertos.size());
+        if (pedidosAbiertos.size() < 1){
+            //*** Congifuraciómn del Table Row
             TableRow tbrow = new TableRow(getContext());
             tbrow.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.WRAP_CONTENT, TableRow.LayoutParams.WRAP_CONTENT));
             tbrow.setWeightSum(8); //total row weight
-
             TableRow.LayoutParams lp1 = new TableRow.LayoutParams();
             lp1.weight = 2;
-
+            lp1 = new TableRow.LayoutParams(0, TableRow.LayoutParams.WRAP_CONTENT, 8f);
+            TextView t1v = new TextView(getContext());
+            //*Primer campo
+            t1v.setText("------NO HAY NINGUN VIAJE EN CURSO------");
+            t1v.setTextColor(Color.WHITE);
+            t1v.setTextSize(16);
+            t1v.setLayoutParams(lp1);
+            t1v.setGravity(Gravity.CENTER);
+            t1v.setPadding(25,0,15,0);
+            tbrow.addView(t1v);
+            tl.addView(tbrow);
+        }else{
+        for (int i = (pedidosAbiertos.size()-1); i >= 0 ; i--) {
+            //*** Congifuración del Table Row
+            TableRow tbrow = new TableRow(getContext());
+            tbrow.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.WRAP_CONTENT, TableRow.LayoutParams.WRAP_CONTENT));
+            tbrow.setWeightSum(8); //total row weight
+            TableRow.LayoutParams lp1 = new TableRow.LayoutParams();
+            lp1.weight = 2;
             lp1 = new TableRow.LayoutParams(0, TableRow.LayoutParams.WRAP_CONTENT, 1f);
             TextView t1v = new TextView(getContext());
             //*Primer campo
-            t1v.setText(""+i);
+            t1v.setText(""+pedidosAbiertos.get(i).getId());
             t1v.setTextColor(Color.WHITE);
             t1v.setTextSize(12);
             t1v.setLayoutParams(lp1);
@@ -132,7 +147,7 @@ public class HomeFragment extends Fragment {
             //*Segundo campo
             lp1 = new TableRow.LayoutParams(0, TableRow.LayoutParams.WRAP_CONTENT, 4f);
             TextView t2v = new TextView(getContext());
-            t2v.setText("Pto. Vallarta - Guadalajara");
+            t2v.setText( SUCURSALES[pedidosAbiertos.get(i).getOrigen()].getNombre()+" - "+SUCURSALES[pedidosAbiertos.get(i).getDestino()].getNombre());
             t2v.setTextColor(Color.WHITE);
             t2v.setTextSize(12);
             t2v.setLayoutParams(lp1);
@@ -142,7 +157,7 @@ public class HomeFragment extends Fragment {
             //*Tercer campo
             lp1 = new TableRow.LayoutParams(0, TableRow.LayoutParams.WRAP_CONTENT, 2f);
             TextView t3v = new TextView(getContext());
-            t3v.setText("$2950.00");
+            t3v.setText("$"+pedidosAbiertos.get(i).getPrecio());
             t3v.setTextColor(Color.WHITE);
             t3v.setTextSize(12);
             t3v.setLayoutParams(lp1);
@@ -162,24 +177,34 @@ public class HomeFragment extends Fragment {
             t4v.setPadding(33,0,0,0);
             tbrow.addView(t4v);
 
-            t4v.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Intent navegacion = null;
-                    navegacion = new Intent(getContext(), VerPedido.class);
-                    navegacion.putExtra("status", 1);
-                    startActivity(navegacion);
-                }
-            });
+            t4v.setOnClickListener( new listenerVerPedido(pedidosAbiertos.get(i), getContext(), controlador));
 
             tl.addView(tbrow);
 
         }
-
-
-
+        }
         TableLayout tl2 = view.findViewById(R.id.tblViajesTerminados);
-        for (int i = 20; i > 0; i--) {
+        tl2.removeAllViews();
+        if (pedidosCerrados.size() < 1){
+            //*** Congifuraciómn del Table Row
+            TableRow tbrow = new TableRow(getContext());
+            tbrow.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.WRAP_CONTENT, TableRow.LayoutParams.WRAP_CONTENT));
+            tbrow.setWeightSum(8); //total row weight
+            TableRow.LayoutParams lp1 = new TableRow.LayoutParams();
+            lp1.weight = 2;
+            lp1 = new TableRow.LayoutParams(0, TableRow.LayoutParams.WRAP_CONTENT, 8f);
+            TextView t1v = new TextView(getContext());
+            //*Primer campo
+            t1v.setText("------NO HAY NINGUN VIAJE TERMINADO------");
+            t1v.setTextColor(Color.WHITE);
+            t1v.setTextSize(16);
+            t1v.setLayoutParams(lp1);
+            t1v.setGravity(Gravity.CENTER);
+            t1v.setPadding(25,0,15,0);
+            tbrow.addView(t1v);
+            tl2.addView(tbrow);
+        }else{
+        for (int i = pedidosCerrados.size()-1; i >= 0; i--) {
             //Table Row
             TableRow tbrow = new TableRow(getContext());
             tbrow.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.WRAP_CONTENT, TableRow.LayoutParams.WRAP_CONTENT));
@@ -191,7 +216,7 @@ public class HomeFragment extends Fragment {
             lp1 = new TableRow.LayoutParams(0, TableRow.LayoutParams.WRAP_CONTENT, 1f);
             TextView t1v = new TextView(getContext());
             //*Primer campo
-            t1v.setText(""+i);
+            t1v.setText(""+pedidosCerrados.get(i).getId());
             t1v.setTextColor(Color.WHITE);
             t1v.setTextSize(12);
             t1v.setLayoutParams(lp1);
@@ -201,7 +226,7 @@ public class HomeFragment extends Fragment {
             //*Segundo campo
             lp1 = new TableRow.LayoutParams(0, TableRow.LayoutParams.WRAP_CONTENT, 4f);
             TextView t2v = new TextView(getContext());
-            t2v.setText("Calfornia - Chiapas");
+            t2v.setText( SUCURSALES[pedidosCerrados.get(i).getOrigen()].getNombre()+" - "+SUCURSALES[pedidosCerrados.get(i).getDestino()].getNombre());
             t2v.setTextColor(Color.WHITE);
             t2v.setTextSize(12);
             t2v.setLayoutParams(lp1);
@@ -211,7 +236,7 @@ public class HomeFragment extends Fragment {
             //*Tercer campo
             lp1 = new TableRow.LayoutParams(0, TableRow.LayoutParams.WRAP_CONTENT, 2f);
             TextView t3v = new TextView(getContext());
-            t3v.setText("70000.01");
+            t3v.setText("$"+pedidosCerrados.get(i).getPrecio());
             t3v.setTextColor(Color.WHITE);
             t3v.setTextSize(12);
             t3v.setLayoutParams(lp1);
@@ -231,15 +256,11 @@ public class HomeFragment extends Fragment {
             t4v.setPadding(33,0,0,0);
             tbrow.addView(t4v);
 
-            t4v.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Navegacion();
-                }
-            });
+            t4v.setOnClickListener( new listenerVerPedido(pedidosCerrados.get(i), getContext(), controlador));
 
             tl2.addView(tbrow);
 
+        }
         }
     }
     void Navegacion(){
@@ -278,5 +299,26 @@ public class HomeFragment extends Fragment {
         getActivity().finish();
     }
   */
-
 }
+class listenerVerPedido  implements View.OnClickListener
+{
+    ControladorBaseDatos controlador;
+    Pedido pedido;
+    Context context;
+    public listenerVerPedido(Pedido pedido, Context context, ControladorBaseDatos controlador) {
+        this.pedido = pedido;
+        this.context = context;
+        this.controlador = controlador;
+    }
+
+    @Override
+    public void onClick(View v)
+    {
+        Intent navegacion = null;
+        navegacion =  new Intent(context, VerPedido.class);
+        navegacion.putExtra("pedido", pedido);
+        //navegacion.putExtra("controlador", controlador);
+        context.startActivity(navegacion);
+    }
+
+};

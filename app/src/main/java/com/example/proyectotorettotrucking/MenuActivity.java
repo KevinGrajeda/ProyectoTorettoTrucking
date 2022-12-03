@@ -22,6 +22,7 @@ public class MenuActivity extends AppCompatActivity {
     ViewPager2 viewsContainer;
     FragmentControler menuCtrl;
     ControladorBaseDatos controlador;
+    private static MenuActivity instance = null;
 
     //* Agregado para el top menu
     @Override
@@ -32,6 +33,9 @@ public class MenuActivity extends AppCompatActivity {
         return true;
     }
 
+    public static MenuActivity getInstance() {
+        return instance;
+    }
     //* listeners para eñ top menu
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
@@ -57,7 +61,7 @@ public class MenuActivity extends AppCompatActivity {
         setContentView(R.layout.activity_menu);
         menu = findViewById(R.id.bottom_Tab);
         viewsContainer = findViewById(R.id.views_container);
-
+        instance = this;
         menuCtrl = new FragmentControler(getSupportFragmentManager(), getLifecycle());
         viewsContainer.setAdapter(menuCtrl);
         viewsContainer.registerOnPageChangeCallback(new ViewPager2.OnPageChangeCallback() {

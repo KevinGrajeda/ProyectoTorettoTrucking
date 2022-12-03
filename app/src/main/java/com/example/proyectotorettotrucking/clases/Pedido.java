@@ -1,6 +1,8 @@
 package com.example.proyectotorettotrucking.clases;
 
-public class Pedido {
+import java.io.Serializable;
+
+public class Pedido implements Serializable {
 
     private int id,noPedido,destino,origen,vehiculo,status;
     private String descripcion,productos;

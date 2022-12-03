@@ -7,6 +7,7 @@ import static com.example.proyectotorettotrucking.baseDeDatos.Informacion.SUCURS
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -172,6 +173,7 @@ public class AgregarPedidoFragment extends Fragment {
         ControladorBaseDatos controlador = ((MenuActivity) requireActivity()).controlador;
         controlador.agregarPedido(pedido);
         limpiar();
+        HomeFragment.getInstance().tableinit(HomeFragment.getInstance().getView());
     }
     public void limpiar(){
         productosAgregados = "Productos agregados:\n";
