@@ -312,8 +312,6 @@ class listenerVerPedido  implements View.OnClickListener
         navegacion =  new Intent(context, VerPedido.class);
         navegacion.putExtra("pedido", pedido);
         context.startActivity(navegacion);
-        Activity act =(MenuActivity)context;
-        act.finish();
     }
 
 };

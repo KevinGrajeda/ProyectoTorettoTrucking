@@ -51,8 +51,6 @@ public class VerPedido extends AppCompatActivity {
          volverbtn.setOnClickListener(new View.OnClickListener() {
              @Override
              public void onClick(View view) {
-                 Intent navegacion = new Intent(VerPedido.this, MenuActivity.class);
-                 startActivity(navegacion);
                  finish();
              }
          });
@@ -86,5 +84,11 @@ public class VerPedido extends AppCompatActivity {
             Intent navegacion = new Intent(VerPedido.this, MenuActivity.class);
             startActivity(navegacion);
             finish();
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        finish();
     }
 }
