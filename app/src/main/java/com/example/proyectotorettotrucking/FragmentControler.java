@@ -21,8 +21,8 @@ public class FragmentControler extends FragmentStateAdapter {
     public Fragment createFragment(int position) {
         switch (position) {
             case 0: return new HomeFragment();
-            case 1: return new HistoryFragment();
-            case 2: return new AgregarPedidoFragment();
+            case 1: return new AgregarPedidoFragment();
+            case 2: return new HistoryFragment();
             default:return new HomeFragment();
         }
     }

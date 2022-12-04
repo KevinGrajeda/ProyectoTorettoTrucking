@@ -27,8 +27,8 @@
         <com.google.android.material.tabs.TabLayout
             android:id="@+id/bottom_Tab"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginEnd="16dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="18dp"
             android:background="@android:color/transparent"
             app:elevation="0dp"
             app:tabIconTintMode="src_atop"
@@ -42,6 +42,11 @@
                 android:layout_height="wrap_content"
                 android:icon="@drawable/ttlogo"
                 android:text="@string/pedidos"
+                app:tint="#FFFFFF" />
+
+            <com.google.android.material.tabs.TabItem
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 app:tint="#FFFFFF" />
 
             <com.google.android.material.tabs.TabItem

@@ -175,6 +175,7 @@ public class AgregarPedidoFragment extends Fragment {
         limpiar();
         HomeFragment.getInstance().tableinit(HomeFragment.getInstance().getView());
     }
+
     public void limpiar(){
         productosAgregados = "Productos agregados:\n";
         pesoTotal = 0;

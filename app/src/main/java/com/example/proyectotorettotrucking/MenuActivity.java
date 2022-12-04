@@ -70,7 +70,7 @@ public class MenuActivity extends AppCompatActivity {
         viewsContainer.registerOnPageChangeCallback(new ViewPager2.OnPageChangeCallback() {
             @Override
             public void onPageSelected(int position) {
-                if (viewsContainer.getCurrentItem() != 2){
+                if (viewsContainer.getCurrentItem() != 1){
                     btnFloat.setImageResource(R.drawable.ic_baseline_add_24);
                 } else {
                     btnFloat.setImageResource(R.drawable.ic_done);
@@ -99,11 +99,10 @@ public class MenuActivity extends AppCompatActivity {
         btnFloat.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (viewsContainer.getCurrentItem() == 2) {
-                    ((AgregarPedidoFragment) getSupportFragmentManager().findFragmentByTag("f2")).terminarPedido();
+                if (viewsContainer.getCurrentItem() == 1) {
+                    ((AgregarPedidoFragment) getSupportFragmentManager().findFragmentByTag("f1")).terminarPedido();
                 } else {
-                    viewsContainer.setCurrentItem(2);
-                    btnFloat.setImageResource(R.drawable.ic_done);
+                    viewsContainer.setCurrentItem(1);
                 }
             }
         });
