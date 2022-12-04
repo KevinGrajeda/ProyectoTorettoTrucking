@@ -96,10 +96,10 @@
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="wrap_content"
+        android:layout_width="139dp"
         android:layout_height="121dp"
         android:layout_marginStart="136dp"
-        android:layout_marginTop="120dp"
+        android:layout_marginTop="90dp"
         android:layout_marginEnd="136dp"
         android:tint="@color/naranjaToretto"
         app:layout_constraintEnd_toEndOf="parent"
