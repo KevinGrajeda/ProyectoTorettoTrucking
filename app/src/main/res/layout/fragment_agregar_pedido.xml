@@ -84,11 +84,12 @@
                     android:layout_weight="1"
                     android:orientation="vertical">
 
-                    <ScrollView
+                    <androidx.core.widget.NestedScrollView
                         android:layout_width="match_parent"
                         android:layout_height="83dp"
                         android:layout_marginTop="10dp"
-                        android:background="@drawable/custom_edittex_v2">
+                        android:background="@drawable/custom_edittex_v2"
+                        android:fillViewport="true">
 
                         <TextView
                             android:id="@+id/txtVerProductosAgregados"
@@ -97,8 +98,8 @@
                             android:text="Productos agregados:"
 
                             android:textColor="@color/gray" />
+                    </androidx.core.widget.NestedScrollView>
 
-                    </ScrollView>
 
                     <TextView
                         android:id="@+id/textView6"
@@ -184,7 +185,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="40dp"
                         android:background="@drawable/custom_edittex_v2_uf"
-                        android:textColor="@color/gray"/>
+                        android:textColor="@color/gray" />
 
                 </LinearLayout>
             </TableRow>

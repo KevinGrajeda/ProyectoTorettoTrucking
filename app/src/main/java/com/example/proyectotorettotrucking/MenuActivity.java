@@ -48,7 +48,14 @@ public class MenuActivity extends AppCompatActivity {
                 salir();
                 break;
             case R.id.btnReset:
-                controlador.reset();
+
+                SharedPreferences preferences = getSharedPreferences("usr.dat", MODE_PRIVATE);
+                if(preferences.getInt("rol",0)==1){
+                    controlador.reset();
+                    Toast.makeText(this, "pedidos eliminados", Toast.LENGTH_SHORT).show();
+                }else{
+                    Toast.makeText(this, "no tienes permisos para realizar esto", Toast.LENGTH_SHORT).show();
+                }
                 break;
         }
         if (navegacion != null) {
