@@ -29,11 +29,14 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="44dp"
         android:layout_marginTop="60dp"
+        android:layout_marginBottom="60dp"
         android:backgroundTint="@color/naranjaToretto"
         android:onClick="salirMenu"
         android:text="salir"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtPassword" />
+        app:layout_constraintTop_toBottomOf="@+id/txtPassword"
+        app:layout_constraintVertical_bias="0.0" />
 
     <EditText
         android:id="@+id/txtPassword"
@@ -61,12 +64,15 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="60dp"
         android:layout_marginEnd="48dp"
+        android:layout_marginBottom="60dp"
         android:backgroundTint="@color/naranjaToretto"
         android:onClick="ingresarMenu"
         android:text="@string/ingresar"
         android:textColor="@color/varGrisToretto"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtPassword" />
+        app:layout_constraintTop_toBottomOf="@+id/txtPassword"
+        app:layout_constraintVertical_bias="0.0" />
 
     <EditText
         android:id="@+id/txtUsuario"
@@ -90,10 +96,10 @@
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="139dp"
+        android:layout_width="wrap_content"
         android:layout_height="121dp"
         android:layout_marginStart="136dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="120dp"
         android:layout_marginEnd="136dp"
         android:tint="@color/naranjaToretto"
         app:layout_constraintEnd_toEndOf="parent"
