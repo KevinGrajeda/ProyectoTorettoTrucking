@@ -34,14 +34,17 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/lstInfo"
         android:layout_width="320dp"
-        android:layout_height="430dp"
+        android:layout_height="0dp"
         android:layout_marginStart="63dp"
         android:layout_marginTop="20dp"
         android:layout_marginEnd="63dp"
+        android:layout_marginBottom="100dp"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/spinnerTipo"
+        app:layout_constraintVertical_bias="0.0"
         tools:listitem="@layout/recycler_row" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
