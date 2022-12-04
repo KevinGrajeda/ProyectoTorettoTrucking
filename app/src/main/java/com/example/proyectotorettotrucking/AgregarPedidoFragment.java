@@ -117,7 +117,7 @@ public class AgregarPedidoFragment extends Fragment {
         float distancia = (float) Math.sqrt(Math.pow(destino.getX() - origen.getX(), 2) + Math.pow(destino.getY() - origen.getY(), 2));
         precio = (distancia * 10000) + ((pesoTotal / 1000) * 10);
         if (origen.getId() != destino.getId()) {
-            txtPrecio.setText("" + precio);
+            txtPrecio.setText("$ " + precio);
         }
     }
 

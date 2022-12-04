@@ -35,8 +35,8 @@
             android:layout_height="match_parent">
 
             <LinearLayout
-                android:layout_width="10dp"
-                android:layout_height="match_parent"
+                android:layout_width="match_parent"
+                android:layout_height="509dp"
                 android:layout_weight="1"
                 android:orientation="vertical">
 
@@ -70,7 +70,7 @@
                 <EditText
                     android:id="@+id/txtVerOrigen"
                     android:layout_width="match_parent"
-                    android:layout_height="40dp"
+                    android:layout_height="wrap_content"
                     android:layout_weight="2"
                     android:background="@drawable/custom_edittex_v2"
                     android:editable="false"
@@ -91,7 +91,7 @@
                 <EditText
                     android:id="@+id/txtVerDestino"
                     android:layout_width="match_parent"
-                    android:layout_height="40dp"
+                    android:layout_height="wrap_content"
                     android:layout_weight="2"
                     android:background="@drawable/custom_edittex_v2"
                     android:editable="false"
@@ -112,7 +112,7 @@
                 <EditText
                     android:id="@+id/txtVerDescripcion"
                     android:layout_width="match_parent"
-                    android:layout_height="40dp"
+                    android:layout_height="wrap_content"
                     android:layout_weight="2"
                     android:background="@drawable/custom_edittex_v2"
                     android:editable="false"
@@ -124,7 +124,7 @@
                 <TextView
                     android:id="@+id/txtVerVehiculo"
                     android:layout_width="match_parent"
-                    android:layout_height="35dp"
+                    android:layout_height="54dp"
                     android:layout_marginTop="10dp"
                     android:gravity="bottom"
                     android:text="Vehiculo:"
@@ -134,7 +134,7 @@
                 <TextView
                     android:id="@+id/txtVerPrecio"
                     android:layout_width="match_parent"
-                    android:layout_height="35dp"
+                    android:layout_height="49dp"
                     android:layout_marginTop="10dp"
                     android:gravity="bottom"
                     android:text="Precio:"
@@ -151,8 +151,8 @@
         android:id="@+id/btnAccion"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="45dp"
+        android:layout_marginTop="56dp"
+        android:layout_marginEnd="44dp"
         android:onClick="entregarPedido"
         android:text="Pedido Entregado"
         app:layout_constraintEnd_toEndOf="parent"
@@ -162,8 +162,8 @@
         android:id="@+id/btnBack"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="46dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginStart="44dp"
+        android:layout_marginTop="56dp"
         android:text="Volver"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tableLayout" />

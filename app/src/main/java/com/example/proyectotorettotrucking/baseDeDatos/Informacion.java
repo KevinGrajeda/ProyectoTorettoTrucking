@@ -46,10 +46,10 @@ public class Informacion {
     };
 
     public static final Usuario[] USUARIOS = {
-            new Usuario(false,"cobian@toretto.com","cobian",0,0),
+            new Usuario(false,"cobian@toretto.com","cobian",0,1),
             new Usuario(false,"javier@toretto.com","javier",1,0),
             new Usuario(false,"arturo@toretto.com","arturo",2,1),
-            new Usuario(false,"kevin@toretto.com","kevin",3,1),
+            new Usuario(false,"kevin@toretto.com","kevin",3,0),
     };
 
 }

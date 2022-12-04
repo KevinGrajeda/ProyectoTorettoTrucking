@@ -76,7 +76,7 @@ public class VerPedido extends AppCompatActivity {
                 VerDestino.setText(SUCURSALES[pedido_.getDestino()].getNombre());
                 VerDescripcion.setText(pedido_.getDescripcion());
                 VerVehiculo.setText("Vehiculo: " +CAMIONES[pedido_.getVehiculo()].getTipo()+" - "+CAMIONES[pedido_.getVehiculo()].getMarca());
-                VerPrecio.setText("Precio: $"+pedido_.getPrecio());
+                VerPrecio.setText("Precio: $ "+pedido_.getPrecio());
         }
 
     }
