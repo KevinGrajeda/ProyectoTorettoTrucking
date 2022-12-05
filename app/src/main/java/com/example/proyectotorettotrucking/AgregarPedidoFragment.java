@@ -132,34 +132,41 @@ public class AgregarPedidoFragment extends Fragment {
         int posicionProducto = spnProductos.getSelectedItemPosition();
         float peso = cantidad * PRODUCTOS[posicionProducto].getPeso();
         pesoTotal += peso;
-        productosAgregados += cantidad + " " + PRODUCTOS[posicionProducto].getNombre() + "\n";
-        txtVerProductosAgregados.setText(productosAgregados + "\nPeso total: " + (pesoTotal / 1000) + "Kg");
 
         for (Camion camion : CAMIONES) {
+            System.out.println("Capacidad"+camion.getCapacidad() * 1000);
+            System.out.println("Peso total"+pesoTotal);
             if ((camion.getCapacidad() * 1000) < pesoTotal) {
+                camionSeleccionado = null;
+                pesoTotal-=peso;
                 break;
             } else {
                 camionSeleccionado = camion;
+
             }
         }
         if (camionSeleccionado == null) {
-            Toast.makeText(getActivity(), "no existe camion para este peso", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getActivity(), "No existe camion para este peso", Toast.LENGTH_SHORT).show();
             return;
+        }
+        else{
+            productosAgregados += cantidad + " " + PRODUCTOS[posicionProducto].getNombre() + "\n";
+            txtVerProductosAgregados.setText(productosAgregados + "\nPeso total: " + (pesoTotal / 1000) + "Kg");
         }
         txtVehiculo.setText(camionSeleccionado.getTipo());
     }
 
     public void terminarPedido() {
         if (spnOrigenes.getSelectedItemPosition() == spnDestinos.getSelectedItemPosition()) {
-            Toast.makeText(getActivity(), "no puedes tener el mismo origen y destino", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getActivity(), "No puedes tener el mismo origen y destino", Toast.LENGTH_SHORT).show();
             return;
         }
         if (pesoTotal == 0) {
-            Toast.makeText(getActivity(), "no hay productos agregados", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getActivity(), "No hay productos agregados", Toast.LENGTH_SHORT).show();
             return;
         }
         if(txtDescripcion.getText().toString().equals("")){
-            Toast.makeText(getActivity(), "agrega una descripcion", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getActivity(), "Agrega una descripcion", Toast.LENGTH_SHORT).show();
             return;
         }
         Pedido pedido = new Pedido();
@@ -189,5 +196,17 @@ public class AgregarPedidoFragment extends Fragment {
         txtPrecio.setText("");
         txtVehiculo.setText("");
         txtDescripcion.setText("");
+    }
+
+    public void limpiarLight(){
+        productosAgregados = "Productos agregados:\n";
+        pesoTotal = 0;
+        precio = 0;
+        camionSeleccionado = new Camion();
+        spnProductos.setSelection(0);
+        txtCantidad.setText("");
+        txtVerProductosAgregados.setText(productosAgregados);
+        txtPrecio.setText("");
+        txtVehiculo.setText("");
     }
 }
