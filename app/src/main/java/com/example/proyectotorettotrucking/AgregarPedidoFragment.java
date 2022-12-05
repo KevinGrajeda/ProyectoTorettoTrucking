@@ -59,7 +59,12 @@ public class AgregarPedidoFragment extends Fragment {
         txtDescripcion = view.findViewById(R.id.txtVerDescripcion);
         txtVehiculo = view.findViewById(R.id.txtVerVehiculo);
         txtPrecio = view.findViewById(R.id.txtVerPrecio);
-
+        view.findViewById(R.id.btnBorrar).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                limpiarLight();
+            }
+        });
         view.findViewById(R.id.btnAgregarProducto).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

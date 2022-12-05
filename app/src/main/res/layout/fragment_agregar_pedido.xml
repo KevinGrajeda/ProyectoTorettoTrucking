@@ -84,22 +84,36 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:orientation="vertical">
-
-                    <androidx.core.widget.NestedScrollView
+                    <RelativeLayout
                         android:layout_width="match_parent"
-                        android:layout_height="83dp"
-                        android:layout_marginTop="10dp"
-                        android:background="@drawable/custom_edittex_v2"
-                        android:fillViewport="true">
-
-                        <TextView
-                            android:id="@+id/txtVerProductosAgregados"
+                        android:layout_height="wrap_content">
+                        <androidx.core.widget.NestedScrollView
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="Productos agregados:"
+                            android:layout_height="83dp"
+                            android:layout_marginTop="10dp"
+                            android:background="@drawable/custom_edittex_v2"
+                            android:fillViewport="true">
 
-                            android:textColor="@color/gray" />
-                    </androidx.core.widget.NestedScrollView>
+                            <TextView
+                                android:id="@+id/txtVerProductosAgregados"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="Productos agregados:"
+                                android:textColor="@color/gray" />
+                        </androidx.core.widget.NestedScrollView>
+
+                        <ImageButton
+                            android:id="@+id/btnBorrar"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:layout_marginTop="14dp"
+                            android:layout_marginRight="5dp"
+                            android:background="@android:color/transparent"
+                            android:padding="5dp"
+                            android:src="@drawable/ic_delete"
+                            app:tint="@color/naranjaToretto" />
+                    </RelativeLayout>
 
 
                     <TextView
